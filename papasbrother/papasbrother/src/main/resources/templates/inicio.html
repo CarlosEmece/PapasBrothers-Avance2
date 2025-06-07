@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Como Pa Pobre</title>
+
+    <title>Papas Broather</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -24,7 +25,7 @@
                 <div class="container-fluid">
                     <!-- Logo o título del negocio -->
                     <a class="navbar-brand" href="#">
-                        <img th:src="@{/img/LogoPapaB.png}" alt="Logo" width="40" height="40"
+                        <img th:src="@{/img/LogoPapaB.png}" alt="Logo" width="100" height="63"
                             class="d-inline-block align-text-top">
                         <h5 class="offcanvas-title">
                             <span style="color: red;">Papas</span>
@@ -63,8 +64,8 @@
                                     <a class="nav-link active" href="/">Inicio</a>
                                 </li>
                                 <li class="nav-item">
-                            <a class="nav-link" th:href="@{/login}">Iniciar Sesión</a>
-                        </li>
+                                    <a class="nav-link" th:href="@{/login}">Iniciar Sesión</a>
+                                </li>
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -76,11 +77,11 @@
                                         <li><a class="dropdown-item" th:href="@{/menu}">Alitas</a></li>
                                         <li><a class="dropdown-item" th:href="@{/menu}">Salchipapas</a></li>
                                         <li><a class="dropdown-item" th:href="@{/menu}">Pollos Broaster</a></li>
-                                        
+
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Promociones</a>
+                                    <a class="nav-link" th:href="@{/promociones}">Promociones</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" th:href="@{/nosotros}">Nosotros</a>
@@ -118,10 +119,18 @@
         <img th:src="@{/img/inicio.jpeg}" alt="Producto" class="hero-image">
         <div class="overlay"></div>
         <div class="hero-text">
+            <!-- Imagen izquierda -->
+            <img th:src="@{/img/animado1.png}" alt="Imagen Izquierda" class="moving-image left-image">
+
             <h1>-- BIENVENIDOS --</h1>
+
+            <!-- Imagen derecha -->
+            <img th:src="@{/img/animado2.png}" alt="Imagen Derecha" class="moving-image right-image">
+
             <p>Poemas convertidos en sabores</p>
         </div>
     </div>
+
 
     <!-- Carrusel -->
     <div id="carouselExampleCaptions" class="carousel slide" style="margin-top: 8px;">
@@ -135,13 +144,13 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img th:src="@{/img/promo1.jpg}" class="d-block w-100" alt="...">
+                <img th:src="@{/img/fotoportada1.png}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img th:src="@{/img/promo2.jpg}" class="d-block w-100" alt="...">
+                <img th:src="@{/img/fotoportada2.png}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img th:src="@{/img/promo3.jpg}" class="d-block w-100" alt="...">
+                <img th:src="@{/img/fotoportada4.png}" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -169,6 +178,7 @@
 
 
     <!-- Sección Menú -->
+    <br>
     <section class="menu-section">
         <div class="container">
             <h2 class="text-center1">Nuestro Menú</h2>
@@ -212,6 +222,7 @@
     </section>
 
     <!-- videos para las promociones -->
+    <br>
     <section class="video-section">
         <div class="container">
             <div class="row">
@@ -248,6 +259,21 @@
     </section>
 
 
+    <!-- Mapa -->
+    <section class="map-section my-5">
+        <div class="container">
+            <h2 class="map-title">Encuéntranos Aquí</h2>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.90436157236005!2d-77.07640017938017!3d-12.011145055362187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cfb4318a2a47%3A0x3c5a19789fcf147d!2sShirley%20mija!5e0!3m2!1ses!2spe!4v1748982724149!5m2!1ses!2spe"
+                        width="100%" height="450" style="border:0; border-radius: 8px;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!--Footer-->
@@ -276,15 +302,22 @@
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                     <h5 class="text-uppercase mb-4 font-weight-bold">Nosotros</h5>
 
-                    <a href="#" class="text-white text-decoration-none d-block mb-2">Historia</a>
-                    <a href="#" class="text-white text-decoration-none d-block mb-2">Trabaja con Nosotros</a>
+                    <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Historia</a>
+                    <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Trabaja con
+                        Nosotros</a>
+                    <a href="#" class="text-white text-decoration-none d-block mb-2" data-bs-toggle="modal"
+                        data-bs-target="#modalSugerencia">Sugerencia</a>
+
                 </div>
 
                 <!-- Políticas -->
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h5 class="text-uppercase mb-4 font-weight-bold">Legales</h5>
-                    <a href="#" class="text-white text-decoration-none d-block mb-2">Políticas de privacidad</a>
-                    <a href="#" class="text-white text-decoration-none d-block mb-2">Términos y condiciones</a>
+                    <a th:href="@{/politicas}" class="text-white text-decoration-none d-block mb-2">Políticas de
+                        privacidad</a>
+                    <a th:href="@{/terminos}" class="text-white text-decoration-none d-block mb-2">Términos y
+                        condiciones</a>
+                    <a th:href="@{/administradorpanel}" class="text-white text-decoration-none d-block mb-2">Admin</a>
                 </div>
 
                 <!-- Atención al Cliente -->
@@ -311,9 +344,58 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
+        <!-- Modal Sugerencia -->
+        <div class="modal fade" id="modalSugerencia">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sugerencias</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="textoNbre">ComoPaPobre</p>
+                        <p class="textoNbre">Mz C6 lote 14, Ventanilla, Lima, Perú</p>
+
+                        <h3 class="text-center mb-4">¡DÉJANOS TUS SUGERENCIAS!</h3>
+
+                        <form class="row g-3" action="/sugerencias/enviar" method="post">
+                            <div class="col-md-6">
+                                <label for="sugerenciaNombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="sugerenciaEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="sugerenciaDescripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descripcion" name="descripcion" rows="3"
+                                    required></textarea>
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-warning w-100 mb-3">
+                                    Enviar Sugerencia
+                                </button>
+                                <a href="/sugerencias/list" class="btn btn-secondary w-100">
+                                    <i class="fas fa-list me-2"></i>
+                                    Ver Todas las Sugerencias
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </footer>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
