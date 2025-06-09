@@ -209,8 +209,31 @@ Formulario de registro de usuario:
 
 ---
 
+# 🧾 Proyecto: Boleta - Papa Brothers
+
+Este proyecto es una implementación de una **boleta digital** para el restaurante ficticio _Papa Brothers_, que permite mostrar los detalles de una venta (cliente, productos, precios, fecha y hora) y exportar la boleta en formato PDF.
+
+## 🛠️ Tecnologías Utilizadas
+
+- HTML5 + CSS3
+- JavaScript (Vanilla JS)
+- [html2pdf.js](https://github.com/eKoopmans/html2pdf) para la exportación a PDF
+- Spring Boot (Java) para renderizar la vista con datos dinámicos usando Thymeleaf
+
+
+## 🚀 ¿Cómo funciona?
+
+1. El controlador Java (`BoletaControlador`) genera la fecha, hora y datos de cliente para mostrarlos en la boleta.
+2. El archivo HTML (`boleta.html`) presenta los datos estructurados en una tabla y se renderiza con ayuda de Thymeleaf.
+3. Un botón en la interfaz permite al usuario **exportar la boleta como PDF**, utilizando la librería `html2pdf.js`.
+4. Al cargar la página, se genera un número aleatorio de boleta y se muestran la fecha y hora actuales.
+
+
+## 📋 Estructura del Proyecto
+
 ## 👨‍💻 Autores
 
 Proyecto realizado por el equipo del curso Integrador I – Universidad Tecnológica del Perú (UTP).
 
 ---
+
