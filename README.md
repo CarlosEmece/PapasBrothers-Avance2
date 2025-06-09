@@ -229,8 +229,6 @@ Este proyecto es una implementación de una **boleta digital** para el restauran
 4. Al cargar la página, se genera un número aleatorio de boleta y se muestran la fecha y hora actuales.
 
 
-## 📋 Estructura del Proyecto
-
 ## 👨‍💻 Autores
 
 Proyecto realizado por el equipo del curso Integrador I – Universidad Tecnológica del Perú (UTP).
