@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PaginaPrincipalControlador {
     @GetMapping("/")
     public String mostrarIndex() {
-        return "index"; // Cambia "inicio" por "index"
+        return "index"; 
     }
 
     @GetMapping("/inicio")
     public String mostrarInicio() {
-        return "inicio"; // Ahora "inicio" tiene su propia ruta
+        return "inicio"; 
     }
 
-    @GetMapping("/loginn")
+    @GetMapping("/login")
     public String mostrarLogin() {
-        return "login"; // vista específica para reclamos si lo deseas aparte
+        return "login"; 
     }
 
     @GetMapping("/menu")
@@ -50,16 +50,5 @@ public class PaginaPrincipalControlador {
         return "politicas"; 
     }
 
-
-    @GetMapping("/administradorpanel")
-    public String mostrarAdministrador() {
-        return "administradorpanel"; 
-    }
- 
-
-    @GetMapping("/sugerencia")
-    public String mostrarSugerencia() {
-        return "sugerencia"; 
-    }
 
 }

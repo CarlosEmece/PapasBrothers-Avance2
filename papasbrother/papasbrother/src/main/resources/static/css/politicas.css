@@ -6,8 +6,8 @@ body {
 }
 
 .text-center1 {
-    text-align: center; 
-    font-family: 'Righteous', cursive; 
+    text-align: center;
+    font-family: 'Righteous', cursive;
     font-size: 2.3rem;
 }
 
@@ -29,9 +29,9 @@ body {
 }
 
 .navbar-brand {
-    display: flex; 
-    align-items: center; 
-    font-family: 'Righteous', cursive; 
+    display: flex;
+    align-items: center;
+    font-family: 'Righteous', cursive;
     font-size: 1.5rem;
     color: #FFCA1A;
 }
@@ -101,14 +101,14 @@ body {
 }
 
 .hero-text h1 {
-    font-family: 'Pacifico', cursive; 
+    font-family: 'Pacifico', cursive;
     font-weight: 700;
     font-size: 5rem;
     color: orange;
 }
 
 .hero-text p {
-    font-family: 'Montserrat', cursive; 
+    font-family: 'Montserrat', cursive;
     font-weight: 400;
     font-size: 1.5rem;
     height: 5px;
@@ -116,71 +116,144 @@ body {
 
 
 
+
+
 /* =======================
-   MENÚ
+   POLITICAS
 ======================= */
-.menu-section {
-    padding: 10px 0;
-    background-color: #f8eed0;
+
+.faq-container {
+    margin: 100px auto 50px;
+    max-width: 1300px;
+    padding: 0 20px;
+    animation: aparecer 0.6s ease-out forwards;
 }
 
-.menu {
+.faq-title {
+    font-family: 'Righteous', cursive;
+    color: #212529;
+    font-size: 2.8rem;
     text-align: center;
-    padding: 30px;
-    border-radius: 10px;
-    color: white;
-    background-size: cover;
-    background-position: center;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin-bottom: 60px;
     position: relative;
-    overflow: hidden;
-    transition: transform 0.3s;
+    padding-bottom: 15px;
 }
 
-.menu:hover {
-    transform: scale(1.05);
-}
-
-.overlay1 {
+.faq-title::after {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: #FFCA1A;
+    border-radius: 2px;
 }
 
-.inner_content {
-    position: relative;
-    z-index: 2;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
+.faq-category {
+    margin-bottom: 3rem;
+    background: #FFFFFF;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(33, 37, 41, 0.08);
+    border: 1px solid #EEEBE5;
 }
 
+.faq-category h2 {
+    color: #212529;
+    font-family: 'Righteous', cursive;
+    border-bottom: 2px solid #FFCA1A;
+    padding-bottom: 0.8rem;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
 
+.faq-item {
+    background: #FFFFFF;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid #FFCA1A;
+}
 
-/* =======================
-   BOTONES
-======================= */
-.btn-primary {
-    background-color: orange;
-    color: black;
+.faq-item:hover {
+    box-shadow: 5px 5px 15px rgba(33, 37, 41, 0.1);
+    transform: translateY(-3px);
+}
+
+.faq-question {
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 202, 26, 0.05);
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #212529;
+    font-family: 'Alata', sans-serif;
+    font-weight: 600;
+}
+
+.toggle-icon {
+    font-size: 1.8rem;
     font-weight: bold;
-    border: 1px solid black;
+    color: #FFCA1A;
+    transition: transform 0.3s ease;
+    margin-left: 15px;
 }
 
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary:focus {
-    background-color: #846D22;
-    color: black;
-    box-shadow: none;
+.faq-answer {
+    display: none;
+    padding: 0 1.5rem 1.5rem;
+    color: #5A5A5A;
+    line-height: 1.7;
+    font-family: 'Alata', sans-serif;
 }
+
+.faq-answer.active {
+    display: block;
+}
+
+.faq-answer p {
+    margin-bottom: 1rem;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 15px;
+    margin: 1rem 0;
+    align-items: center;
+}
+
+.faq-answer a {
+    color: #FFCA1A;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.faq-answer a:hover {
+    color: #212529;
+    text-decoration: underline;
+}
+
+/* Animaciones */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 
 /* =======================
@@ -273,92 +346,6 @@ footer hr {
     font-weight: bold;
     font-size: 1.2rem;
 }
-
-
-/* =======================
-   CONTACTO
-======================= */
-
-.form-container {
-    background: linear-gradient(to right, #ffe082, #ffca28);
-    border: 3px solid #ff6f00;
-    border-radius: 15px;
-    animation: fadeIn 1s ease;
-}
-
-.text-title {
-    color: #d84315;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px #000;
-}
-
-.text-subtitle {
-    color: #4e342e;
-    font-size: 1rem;
-}
-
-.form-label {
-    font-weight: bold;
-    color: #3e2723;
-}
-
-.form-control,
-.form-select,
-textarea.form-control {
-    border: 2px solid black;
-    border-radius: 6px;
-    background-color: #fffde7;
-    color: #212121;
-    font-weight: bold;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    transition: all 0.3s ease-in-out;
-}
-
-.form-control:focus,
-.form-select:focus,
-textarea.form-control:focus {
-    border-color: #ff8f00;
-    box-shadow: 0 0 10px #ffc107;
-    outline: none;
-}
-
-.btn-animate {
-    background-color: #ff9800;
-    border: 2px solid #e65100;
-    color: white;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.btn-animate:hover {
-    background-color: #fb8c00;
-    transform: scale(1.03);
-    box-shadow: 0 0 12px #ffb300;
-}
-
-.link-privacidad {
-    color: #4a148c;
-    font-weight: bold;
-    text-align: center;
-}
-
-.link-privacidad:hover {
-    color: #d500f9;
-    text-decoration: underline;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 
 /* =======================

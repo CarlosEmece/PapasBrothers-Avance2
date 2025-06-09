@@ -2,337 +2,310 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Como Pa Pobre</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/menu.css}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Papas Broather</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/menu.css}">
 </head>
 
 <body>
 
-    <!-- LOGO Y NOMBRE A LA IZQUIERDA -->
-    <nav class="navbar navbar-dark fixed-top">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
+  <!-- LOGO Y NOMBRE A LA IZQUIERDA -->
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
 
+      <!-- Logo o título del negocio -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <img th:src="@{/img/LogoPapaB.png}" alt="Logo" width="100" height="63">
+        <h5 class="m-0">
+          <span style="color: red;">Papas</span>
+          <span style="color: orange;">Brother</span>
+        </h5>
+      </a>
 
-            <nav class="navbar navbar-dark bg-dark fixed-top">
-                <div class="container-fluid">
-                    <!-- Logo o título del negocio -->
-                    <a class="navbar-brand" href="#">
-                        <img th:src="@{/img/LogoPapaB.png}" alt="Logo" width="40" height="40"
-                            class="d-inline-block align-text-top">
-                        <h5 class="offcanvas-title">
-                            <span style="color: red;">Papas</span>
-                            <span style="color: orange;">Brother</span>
-                        </h5>
-                    </a>
+      <!-- Ícono de carrito y botón del menú -->
+      <div class="d-flex align-items-center gap-3">
+        <a href="#" class="text-warning fs-4" title="Carrito de compras">
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+          aria-controls="offcanvasDarkNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
 
-                    <!-- Ícono de carrito y botón del menú juntos -->
-                    <div class="d-flex align-items-center gap-3">
-                        <!-- Carrito -->
-                        <a href="#" class="text-warning fs-4" title="Carrito de compras">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-
-                        <!-- Botón del menú (las tres líneas) -->
-                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-
-                    <!-- Menú desplegable lateral -->
-                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
-                        aria-labelledby="offcanvasDarkNavbarLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title">
-                                <span style="color: red;">Papas</span>
-                                <span style="color: orange;">Brother</span>
-                            </h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                                aria-label="Cerrar"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <ul class="navbar-nav flex-grow-1 pe-3">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/">Inicio</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" th:href="@{/login}">Iniciar Sesión</a></li>
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link active dropdown-toggle" href="#" role="button"
-                                        data-bs-toggle="dropdown">
-                                        Menú
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><a class="dropdown-item" th:href="@{/menu}">Hamburguesas</a></li>
-                                        <li><a class="dropdown-item" th:href="@{/menu}">Alitas</a></li>
-                                        <li><a class="dropdown-item" th:href="@{/menu}">Salchipapas</a></li>
-                                        <li><a class="dropdown-item" th:href="@{/menu}">Pollos Broaster</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Promociones</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" th:href="@{/nosotros}">Nosotros</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" th:href="@{/contacto}">Contacto</a>
-                                </li>
-                            </ul>
-
-                            <!-- Redes sociales -->
-                            <div class="social-menu mt-4">
-                                <h6 class="text-secondary text-center mb-3">Redes Sociales</h6>
-                                <div class="d-flex justify-content-center gap-3">
-                                    <a href="https://www.facebook.com/comopa.pobre/about" class="text-primary"><i
-                                            class="fab fa-facebook fa-lg"></i></a>
-                                    <a href="https://www.tiktok.com/@como_papobre" style="color: #000000;"><i
-                                            class="fab fa-tiktok fa-lg"></i></a>
-                                    <a href="https://www.instagram.com/como_papobre/" style="color: #C13584;"><i
-                                            class="fab fa-instagram fa-lg"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
+      <!-- Menú desplegable lateral -->
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">
+            <span style="color: red;">Papas</span>
+            <span style="color: orange;">Brother</span>
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Cerrar"></button>
         </div>
-        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav flex-grow-1 pe-3">
+            <li class="nav-item"><a class="nav-link" th:href="@{/inicio}">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/login}">Iniciar Sesión</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Menú</a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" th:href="@{/menu}">Hamburguesas</a></li>
+                <li><a class="dropdown-item" th:href="@{/menu}">Alitas</a></li>
+                <li><a class="dropdown-item" th:href="@{/menu}">Salchipapas</a></li>
+                <li><a class="dropdown-item" th:href="@{/menu}">Pollos Broaster</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/promociones}">Promociones</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/nosotros}">Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/contacto}">Contacto</a></li>
+          </ul>
 
-        </div>
-    </nav>
-
-
-
-    <!-- EL MENU -->
-
-<!-- Sección de Broaster -->
-    <br>
-    <br>
-    <div class="tituloComida">Pollos Broaster</div>
-
-    <div class="container mt-5 mb-5">
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-        <!-- Item 1 -->
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/broaaster pecho.webp" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
-            <div class="card-body text-center">
-              <h5 class="card-title">Broaster Pecho</h5>
-              <p class="card-text">S/ 14.00</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/broaster encuentrop.avif" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
-            <div class="card-body text-center">
-              <h5 class="card-title">Broaster Encuentro</h5>
-              <p class="card-text">S/ 13.00</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
-            </div>
-          </div>
-        </div>
-        <!-- Item 2 -->
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/broaster pierna.jpg" class="card-img-top fixed-menu-img" alt="Hamburguesa Doble">
-            <div class="card-body text-center">
-              <h5 class="card-title">Broaster Pierna</h5>
-              <p class="card-text">S/ 12.00</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
-            </div>
-          </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/broaster ala.jpg" class="card-img-top fixed-menu-img" alt="Salchipapa Especial">
-            <div class="card-body text-center">
-              <h5 class="card-title">Broaster Ala</h5>
-              <p class="card-text">S/ 11.00</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
+          <!-- Redes sociales -->
+          <div class="social-menu mt-4">
+            <h6 class="text-secondary text-center mb-3">Redes Sociales</h6>
+            <div class="d-flex justify-content-center gap-3">
+              <a href="https://www.facebook.com/comopa.pobre/about" class="text-primary"><i
+                  class="fab fa-facebook fa-lg"></i></a>
+              <a href="https://www.tiktok.com/@como_papobre" style="color: #000000;"><i
+                  class="fab fa-tiktok fa-lg"></i></a>
+              <a href="https://www.instagram.com/como_papobre/" style="color: #C13584;"><i
+                  class="fab fa-instagram fa-lg"></i></a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
-    <!-- Sección de Hamburguesas -->
-    <div class="tituloComida">Hamburguesas</div>
-    <div class="container mt-5 mb-5">
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-        <!-- Item 1 -->
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/h. de carne.jpg" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
-            <div class="card-body text-center">
-              <h5 class="card-title">Hamburguesa Carne Clásica</h5>
-              <p class="card-text">S/ 7.00</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
-            </div>
-          </div>
-        </div>
+  </nav>
 
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/h. de pollo.jpeg" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
-            <div class="card-body text-center">
-              <h5 class="card-title">Hamburguesa Pollo Clásica</h5>
-              <p class="card-text">S/ 7.00</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
-            </div>
+
+  <!-- EL MENU -->
+
+  <!-- Sección de Broaster -->
+  <br>
+  <br>
+  <div class="tituloComida">Pollos Broaster</div>
+
+  <div class="container mt-5 mb-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <!-- Item 1 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/broaaster pecho.webp" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
+          <div class="card-body text-center">
+            <h5 class="card-title">Broaster Pecho</h5>
+            <p class="card-text">S/ 14.00</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
           </div>
         </div>
-        <!-- Item 2 -->
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/casera.jpg" class="card-img-top fixed-menu-img" alt="Hamburguesa Doble">
-            <div class="card-body text-center">
-              <h5 class="card-title">Hamburguesa Casera</h5>
-              <p class="card-text">S/ 9.00</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
-            </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/broaster encuentrop.avif" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
+          <div class="card-body text-center">
+            <h5 class="card-title">Broaster Encuentro</h5>
+            <p class="card-text">S/ 13.00</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
           </div>
         </div>
-        <!-- Item 3 -->
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/desilachado.webp" class="card-img-top fixed-menu-img" alt="Salchipapa Especial">
-            <div class="card-body text-center">
-              <h5 class="card-title">Hamburguesa Desilachado</h5>
-              <p class="card-text">S/ 9.00</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
-            </div>
+      </div>
+      <!-- Item 2 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/broaster pierna.jpg" class="card-img-top fixed-menu-img" alt="Hamburguesa Doble">
+          <div class="card-body text-center">
+            <h5 class="card-title">Broaster Pierna</h5>
+            <p class="card-text">S/ 12.00</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
+          </div>
+        </div>
+      </div>
+      <!-- Item 3 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/broaster ala.jpg" class="card-img-top fixed-menu-img" alt="Salchipapa Especial">
+          <div class="card-body text-center">
+            <h5 class="card-title">Broaster Ala</h5>
+            <p class="card-text">S/ 11.00</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Sección de Papas -->
-    <div class="tituloComida">Salchipapas</div>
-    <div class="container mt-5 mb-5">
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-        <!-- Item 1 -->
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/salchipapamenu.webp" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
-            <div class="card-body text-center">
-              <h5 class="card-title">Salchipapa</h5>
-              <p class="card-text">S/ 18.90</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/porcion_papa.jpg" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
-            <div class="card-body text-center">
-              <h5 class="card-title">Caja de Papas</h5>
-              <p class="card-text">S/ 8.00</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
-            </div>
-          </div>
-        </div>
-        <!-- Item 2 -->
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/conopapa.png" class="card-img-top fixed-menu-img" alt="Hamburguesa Doble">
-            <div class="card-body text-center">
-              <h5 class="card-title">Conopapas</h5>
-              <p class="card-text">S/ 15.00</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
-            </div>
-          </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="col">
-          <div class="card h-100">
-            <img src="img/salchicono.jpeg" class="card-img-top fixed-menu-img" alt="Salchipapa Especial">
-            <div class="card-body text-center">
-              <h5 class="card-title">Salchicono</h5>
-              <p class="card-text">S/ 6.50</p>
-              <a href="#" class="btn btn-warning">Pedir ahora</a>
-            </div>
+  <!-- Sección de Hamburguesas -->
+  <div class="tituloComida">Hamburguesas</div>
+  <div class="container mt-5 mb-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <!-- Item 1 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/h. de carne.jpg" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
+          <div class="card-body text-center">
+            <h5 class="card-title">Hamburguesa Carne Clásica</h5>
+            <p class="card-text">S/ 7.00</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
           </div>
         </div>
       </div>
-    </div>  
 
-
-
-
-    <!-- FOOTER -->
-    <footer class="bg-dark text-white pt-5 pb-4 mt-5">
-        <div class="container text-md-left">
-            <div class="row">
-
-                <!-- Logo -->
-                <div class="col-md-3">
-                    <img src="/img/LogoPapaB.png" alt="Logo" height="80px">
-                    <p class="mt-2">Papa Brothers - Sabor que une.</p>
-                </div>
-
-                <!-- Redes -->
-                <div class="col-md-2">
-                    <h5 class="text-uppercase mb-4">Redes Sociales</h5>
-                    <a href="#" class="text-white d-block mb-2"><i class="fab fa-facebook-f me-2"></i>Facebook</a>
-                    <a href="#" class="text-white d-block mb-2"><i class="fab fa-instagram me-2"></i>Instagram</a>
-                    <a href="#" class="text-white d-block mb-2"><i class="fab fa-tiktok me-2"></i>Tiktok</a>
-                </div>
-
-                <!-- Nosotros -->
-                <div class="col-md-3">
-                    <h5 class="text-uppercase mb-4">Nosotros</h5>
-                    <a href="#" class="text-white d-block mb-2">Historia</a>
-                    <a href="#" class="text-white d-block mb-2">Trabaja con Nosotros</a>
-                </div>
-
-                <!-- Legales -->
-                <div class="col-md-2">
-                    <h5 class="text-uppercase mb-4">Legales</h5>
-                    <a href="#" class="text-white d-block mb-2">Políticas de privacidad</a>
-                    <a href="#" class="text-white d-block mb-2">Términos y condiciones</a>
-                </div>
-
-                <!-- Atención -->
-                <div class="col-md-2">
-                    <h5 class="text-uppercase mb-4">Atención al Cliente</h5>
-                    <p><i class="bi bi-telephone-fill me-2"></i>(01) 7137590</p>
-                    <p><i class="bi bi-envelope-fill me-2"></i> contacto@papabrothers.com</p>
-                    <p><i class="bi bi-geo-alt-fill me-2"></i> San Martín de Porres, Lima - Perú</p>
-                </div>
-            </div>
-
-            <hr class="mb-4">
-
-            <div class="row align-items-center">
-                <div class="col-md-7">
-                    <p>© 2025 Grupo 3. Todos los derechos reservados.</p>
-                </div>
-                <div class="col-md-5 text-md-end">
-                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-tiktok"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/h. de pollo.jpeg" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
+          <div class="card-body text-center">
+            <h5 class="card-title">Hamburguesa Pollo Clásica</h5>
+            <p class="card-text">S/ 7.00</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
+          </div>
         </div>
-    </footer>
+      </div>
+      <!-- Item 2 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/casera.jpg" class="card-img-top fixed-menu-img" alt="Hamburguesa Doble">
+          <div class="card-body text-center">
+            <h5 class="card-title">Hamburguesa Casera</h5>
+            <p class="card-text">S/ 9.00</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
+          </div>
+        </div>
+      </div>
+      <!-- Item 3 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/desilachado.webp" class="card-img-top fixed-menu-img" alt="Salchipapa Especial">
+          <div class="card-body text-center">
+            <h5 class="card-title">Hamburguesa Desilachado</h5>
+            <p class="card-text">S/ 9.00</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Sección de Papas -->
+  <div class="tituloComida">Salchipapas</div>
+  <div class="container mt-5 mb-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <!-- Item 1 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/salchipapamenu.webp" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
+          <div class="card-body text-center">
+            <h5 class="card-title">Salchipapa</h5>
+            <p class="card-text">S/ 18.90</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/porcion_papa.jpg" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
+          <div class="card-body text-center">
+            <h5 class="card-title">Caja de Papas</h5>
+            <p class="card-text">S/ 8.00</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
+          </div>
+        </div>
+      </div>
+      <!-- Item 2 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/conopapa.png" class="card-img-top fixed-menu-img" alt="Hamburguesa Doble">
+          <div class="card-body text-center">
+            <h5 class="card-title">Conopapas</h5>
+            <p class="card-text">S/ 15.00</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
+          </div>
+        </div>
+      </div>
+      <!-- Item 3 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/salchicono.jpeg" class="card-img-top fixed-menu-img" alt="Salchipapa Especial">
+          <div class="card-body text-center">
+            <h5 class="card-title">Salchicono</h5>
+            <p class="card-text">S/ 6.50</p>
+            <a href="#" class="btn btn-warning">Pedir ahora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white pt-5 pb-4 mt-5">
+    <div class="container text-md-left">
+      <div class="row">
+
+        <!-- Logo -->
+        <div class="col-md-3">
+          <img src="/img/LogoPapaB.png" alt="Logo" height="80px">
+          <p class="mt-2">Papa Brothers - Sabor que une.</p>
+        </div>
+
+        <!-- Redes -->
+        <div class="col-md-2">
+          <h5 class="text-uppercase mb-4">Redes Sociales</h5>
+          <a href="#" class="text-white d-block mb-2"><i class="fab fa-facebook-f me-2"></i>Facebook</a>
+          <a href="#" class="text-white d-block mb-2"><i class="fab fa-instagram me-2"></i>Instagram</a>
+          <a href="#" class="text-white d-block mb-2"><i class="fab fa-tiktok me-2"></i>Tiktok</a>
+        </div>
+
+        <!-- Nosotros -->
+        <div class="col-md-3">
+          <h5 class="text-uppercase mb-4">Nosotros</h5>
+          <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Historia</a>
+          <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Trabaja con Nosotros</a>
+        </div>
+
+        <!-- Legales -->
+        <div class="col-md-2">
+          <h5 class="text-uppercase mb-4">Legales</h5>
+          <a th:href="@{/politicas}" class="text-white text-decoration-none d-block mb-2">Políticas de privacidad</a>
+          <a th:href="@{/terminos}" class="text-white text-decoration-none d-block mb-2">Términos y condiciones</a>
+        </div>
+
+        <!-- Atención -->
+        <div class="col-md-2">
+          <h5 class="text-uppercase mb-4">Atención al Cliente</h5>
+          <p><i class="bi bi-telephone-fill me-2"></i>(01) 7137590</p>
+          <p><i class="bi bi-envelope-fill me-2"></i> contacto@papabrothers.com</p>
+          <p><i class="bi bi-geo-alt-fill me-2"></i> San Martín de Porres, Lima - Perú</p>
+        </div>
+      </div>
+
+      <hr class="mb-4">
+
+      <div class="row align-items-center">
+        <div class="col-md-7">
+          <p>© 2025 Grupo 3. Todos los derechos reservados.</p>
+        </div>
+        <div class="col-md-5 text-md-end">
+          <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
-

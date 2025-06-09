@@ -112,87 +112,107 @@
 
 
 
-
-
-
-
     <!-- PROMOCIONES -->
 
     <div class="container">
-    <section class="promo-section">
-        <h2 class="text-center promo-title">PROMOCIONES IMPERDIBLES</h2>
-
-        <div class="row g-4">
-            <!-- Promoción 1 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="promo-card h-100">
-                    <div class="promo-img-container">
-                        <img th:src="@{/img/promocion1.jpeg}" class="promo-img" alt="Combo Noctámbulos">
-                    </div>
-                    <div class="promo-body">
-                        <h3>LA MEGA PROMO</h3>
-                        <p>4 Alitas Crispy + Hamburguesa Americana + Salchipapa Especial (de Ternera)</p>
-                        <div class="promo-price">
-                            <span class="discounted-price">S/ 10.90</span>
+        <!-- Contenido Estático -->
+        <section class="promo-section">
+            <h2 class="text-center promo-title">PROMOCIONES IMPERDIBLES</h2>
+            <div class="row g-4">
+                <!-- Tarjeta Estática 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="promo-card h-100">
+                        <div class="promo-img-container">
+                            <img th:src="@{/img/promocion1.jpeg}" class="promo-img" alt="Combo Noctámbulos">
                         </div>
-                        <button class="btn btn-promo">Pedir ahora</button>
+                        <div class="promo-body">
+                            <h3>LA MEGA PROMO</h3>
+                            <p>4 Alitas Crispy + Hamburguesa Americana + Salchipapa Especial (de Ternera)</p>
+                            <div class="promo-price">
+                                <span class="discounted-price">S/ 10.90</span>
+                            </div>
+                            <button class="btn btn-promo">Pedir ahora</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tarjeta Estática 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="promo-card h-100">
+                        <div class="promo-img-container">
+                            <img th:src="@{/img/promocion2.jpeg}" class="promo-img" alt="Alitas Explosivas">
+                        </div>
+                        <div class="promo-body">
+                            <h3>PROMO NETFLIX</h3>
+                            <p> 1 Burger Clásica + Gaseosa</p>
+                            <div class="promo-price">
+                                <span class="discounted-price">S/ 8.00</span>
+                            </div>
+                            <button class="btn btn-promo">Pedir ahora</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tarjeta Estática 3 -->
+                 <div class="col-lg-3 col-md-6">
+                    <div class="promo-card h-100">
+                        <div class="promo-img-container">
+                            <img th:src="@{/img/promocion3.webp}" class="promo-img" alt="Alitas Explosivas">
+                        </div>
+                        <div class="promo-body">
+                            <h3>PROMO COMBO UP BURGE</h3>
+                            <p> Up Burge + Papas Fritas + Inca Kola</p>
+                            <div class="promo-price">
+                                <span class="discounted-price">S/ 28.00</span>
+                            </div>
+                            <button class="btn btn-promo">Pedir ahora</button>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Tarjeta Estática 4 -->
+                 <div class="col-lg-3 col-md-6">
+                    <div class="promo-card h-100">
+                        <div class="promo-img-container">
+                            <img th:src="@{/img/promocion4.jpeg}" class="promo-img" alt="Alitas Explosivas">
+                        </div>
+                        <div class="promo-body">
+                            <h3>PROMO PACK FULL</h3>
+                            <p> Burge Doble + Papas Fritas + Gaseosa</p>
+                            <div class="promo-price">
+                                <span class="discounted-price">S/ 28.00</span>
+                            </div>
+                            <button class="btn btn-promo">Pedir ahora</button>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Promoción 2 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="promo-card h-100">
-                    <div class="promo-img-container">
-                        <img th:src="@{/img/promocion2.jpeg}" class="promo-img" alt="Alitas Explosivas">
-                    </div>
-                    <div class="promo-body">
-                        <h3>PROMO NETFLIX</h3>
-                        <p> 1 Burger Clásica + Gaseosa</p>
-                        <div class="promo-price">
-                            <span class="discounted-price">S/ 8.00</span>
+        <!-- Promo dinámicas (agregadas desde AdminPanel) -->
+        <section class="promo-section mt-5">
+            <h2 class="text-center promo-title">Nuevas Promociones</h2>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6" th:each="promo : ${promociones}">
+
+                    <div class="promo-card h-100">
+                        <div class="promo-img-container">
+                            <img th:src="${promo.imagen}" class="promo-img" th:alt="${promo.nombre}">
+
+
                         </div>
-                        <button class="btn btn-promo">Pedir ahora</button>
+                        <div class="promo-body">
+                            <h3 th:text="${promo.nombre}"></h3>
+                            <p th:text="${promo.descripcion}"></p>
+                            <div class="promo-price">
+                                <span th:text="'S/ ' + ${promo.precio}"></span>
+                            </div>
+                            <button class="btn btn-promo">Pedir ahora</button>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Promoción 3 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="promo-card h-100">
-                    <div class="promo-img-container">
-                        <img th:src="@{/img/promocion3.webp}" class="promo-img" alt="Martes de Salchipapas">
-                    </div>
-                    <div class="promo-body">
-                        <h3>PROMO UP BURGER</h3>
-                        <p> 1 Up Burger + Ppas Fritas + Inca Kola / Coca Cola Botella</p>
-                        <div class="promo-price">
-                            <span class="discounted-price">S/ 28.90</span>
-                        </div>
-                        <button class="btn btn-promo">Pedir ahora</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Promoción 4 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="promo-card h-100">
-                    <div class="promo-img-container">
-                        <img th:src="@{/img/promocion4.jpeg}" class="promo-img" alt="Desayuno Madrugador">
-                    </div>
-                    <div class="promo-body">
-                        <h3>PROMO PACK FULL</h3>
-                        <p> 1 Burger Doble + Papas Fritas + Bebida</p>
-                        <div class="promo-price">
-                            <span class="discounted-price">S/ 30.00</span>
-                        </div>
-                        <button class="btn btn-promo">Pedir ahora</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+    </div>
 
 
 
@@ -220,14 +240,17 @@
                 <div class="col-md-3">
                     <h5 class="text-uppercase mb-4">Nosotros</h5>
                     <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Historia</a>
-                    <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Trabaja con Nosotros</a>
+                    <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Trabaja con
+                        Nosotros</a>
                 </div>
 
                 <!-- Legales -->
                 <div class="col-md-2">
                     <h5 class="text-uppercase mb-4">Legales</h5>
-                    <a th:href="@{/politicas}" class="text-white text-decoration-none d-block mb-2">Políticas de privacidad</a>
-                    <a th:href="@{/terminos}" class="text-white text-decoration-none d-block mb-2">Términos y condiciones</a>
+                    <a th:href="@{/politicas}" class="text-white text-decoration-none d-block mb-2">Políticas de
+                        privacidad</a>
+                    <a th:href="@{/terminos}" class="text-white text-decoration-none d-block mb-2">Términos y
+                        condiciones</a>
                 </div>
 
                 <!-- Atención -->

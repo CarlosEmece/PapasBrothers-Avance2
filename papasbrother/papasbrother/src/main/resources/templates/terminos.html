@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Como Pa Pobre</title>
+    <title>Papas Broather</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/registro.css}">
+    <link rel="stylesheet" th:href="@{/css/terminos.css}">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
                 <div class="container-fluid">
                     <!-- Logo o título del negocio -->
                     <a class="navbar-brand" href="#">
-                        <img th:src="@{/img/LogoPapaB.png}" alt="Logo" width="40" height="40"
+                        <img th:src="@{/img/LogoPapaB.png}" alt="Logo" width="100" height="63"
                             class="d-inline-block align-text-top">
                         <h5 class="offcanvas-title">
                             <span style="color: red;">Papas</span>
@@ -60,12 +60,12 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/">Inicio</a>
+                                    <a class="nav-link" th:href="@{/inicio}">Inicio</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link active" th:href="@{/login}">Iniciar Sesión</a></li>
+                                <li class="nav-item"><a class="nav-link" th:href="@{/login}">Iniciar Sesión</a></li>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                                    <a class="nav-link  dropdown-toggle" href="#" role="button"
                                         data-bs-toggle="dropdown">
                                         Menú
                                     </a>
@@ -77,7 +77,7 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Promociones</a>
+                                    <a class="nav-link" th:href="@{/promociones}">Promociones</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" th:href="@{/nosotros}">Nosotros</a>
@@ -112,43 +112,64 @@
 
 
 
-<section class="registro-section py-5" style="margin-top: 120px;">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <div class="card shadow-lg p-4 border-0 rounded-4">
-                    <h3 class="text-center mb-4" style="font-family: 'Righteous', cursive; color: orange;">
-                        Crear Cuenta
-                    </h3>
-                    <form method="post" th:action="@{/registro}" th:object="${usuario}" onsubmit="return validarFormulario()">
-                        <div class="mb-3">
-                            <label for="nombreCompleto" class="form-label">Nombre completo</label>
-                            <input type="text" class="form-control" id="nombreCompleto" th:field="*{nombreCompleto}" required
-                                   pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" title="El nombre solo puede contener letras y espacios.">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo</label>
-                            <input type="email" class="form-control" id="email" th:field="*{email}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="contraseña" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="contraseña" th:field="*{contraseña}" required
-                                   minlength="8" oninput="validarPassword()">
-                            <small id="passwordHelp" class="text-danger" style="display: none;">La contraseña debe tener al menos 8 caracteres.</small>
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-dark">Crear Cuenta</button>
-                        </div>
-                        <div class="text-center mt-3">
-                            <span>¿Ya tienes una cuenta?</span>
-                            <a href="/login" class="text-decoration-none" style="color: #FF5733;">Inicia sesión</a>
-                        </div>
-                    </form>
+    <!-- Terminos -->
+    <main class="container">
+        <section class="terminos-section">
+            <h1 class="section-title">Términos y Condiciones</h1>
+
+            <div class="terminos-content">
+                <p class="intro-text">Bienvenido a Papas Brother...</p>
+
+                <!-- 1. Información Legal -->
+                <section class="termino-categoria">
+                    <h2 class="termino-subtitle">1. Información Legal</h2>
+                    <ul class="prohibiciones-list">
+                        <li><strong>Razón Social:</strong> Papas Brother S.A.C.</li>
+                        <li><strong>Domicilio:</strong> San Martín de Porres, Lima, Perú</li>
+                        <li><strong>Teléfono:</strong> (01) 7137590 </li>
+                        <li><strong>Horario de Atención:</strong> Lunes a Sábado De 8:30 PM a 3 AM</li>
+                    </ul>
+                </section>
+
+                <!-- 2. Uso del Sitio Web -->
+                <section class="termino-categoria">
+                    <h2 class="termino-subtitle">2. Uso del Sitio Web</h2>
+                    <p>Al utilizar el sitio web, aceptas...</p>
+                    <ul class="prohibiciones-list">
+                        <li>Ser mayor de edad</li>
+                        <li>Proporcionar información veraz</li>
+                        <li>No realizar reservas falsas</li>
+                        <li>Respetar la propiedad intelectual</li>
+                    </ul>
+                </section>
+
+                <!-- 3. Reservas y Pedidos -->
+                <section class="termino-categoria">
+                    <h2 class="termino-subtitle">3. Reservas y Pedidos</h2>
+                    <ul class="prohibiciones-list">
+                        <li>Reservas se mantienen por 15 minutos</li>
+                        <li>Pedidos online con 1 hora de anticipación</li>
+                        <li>Cancelamos pedidos incompletos</li>
+                        <li>Precios incluyen IGV</li>
+                    </ul>
+                </section>
+
+                <!-- 4. Métodos de Pago -->
+                <section class="termino-categoria">
+                    <h2 class="termino-subtitle">4. Métodos de Pago</h2>
+                    <ul class="prohibiciones-list">
+                        <li>Aceptamos Yape y Plin</li>
+                        <li>Pagos en efectivo al recoger</li>
+                        <li>No se aceptan tarjetas de crédito</li>
+                    </ul>
+                </section>
+
+                <div class="actualizacion-text">
+                    <p><em>Última actualización: 11 de mayo de 2025</em></p>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+    </main>
 
 
     <!-- FOOTER -->
@@ -173,15 +194,16 @@
                 <!-- Nosotros -->
                 <div class="col-md-3">
                     <h5 class="text-uppercase mb-4">Nosotros</h5>
-                    <a href="#" class="text-white d-block mb-2">Historia</a>
-                    <a href="#" class="text-white d-block mb-2">Trabaja con Nosotros</a>
+                    <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Historia</a>
+                    <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Trabaja con
+                        Nosotros</a>
                 </div>
 
                 <!-- Legales -->
                 <div class="col-md-2">
                     <h5 class="text-uppercase mb-4">Legales</h5>
-                    <a href="#" class="text-white d-block mb-2">Políticas de privacidad</a>
-                    <a href="#" class="text-white d-block mb-2">Términos y condiciones</a>
+                    <a th:href="@{/politicas}" class="text-white text-decoration-none d-block mb-2">Políticas de privacidad</a>
+                    <a th:href="@{/terminos}" class="text-white text-decoration-none d-block mb-2">Términos y condiciones</a>
                 </div>
 
                 <!-- Atención -->
@@ -209,9 +231,7 @@
     </footer>
 
     <!-- Scripts -->
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-         <script th:src="@{/js/registro.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
-

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Como Pa Pobre</title>
+    <title>Papas Broather</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
                 <div class="container-fluid">
                     <!-- Logo o título del negocio -->
                     <a class="navbar-brand" href="#">
-                        <img th:src="@{/img/LogoPapaB.png}" alt="Logo" width="40" height="40"
+                        <img th:src="@{/img/LogoPapaB.png}" alt="Logo" width="100" height="63"
                             class="d-inline-block align-text-top">
                         <h5 class="offcanvas-title">
                             <span style="color: red;">Papas</span>
@@ -60,9 +60,10 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/">Inicio</a>
+                                    <a class="nav-link" th:href="@{/inicio}">Inicio</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link active" th:href="@{/login}">Iniciar Sesión</a></li>
+                                <li class="nav-item"><a class="nav-link active" th:href="@{/login}">Iniciar Sesión</a>
+                                </li>
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -77,7 +78,7 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Promociones</a>
+                                    <a class="nav-link" th:href="@{/promociones}">Promociones</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" th:href="@{/nosotros}">Nosotros</a>
@@ -113,46 +114,40 @@
 
 
     <!-- Iniciar sesion -->
-<section class="login-section py-5" style="margin-top: 120px;">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <div class="card shadow-lg p-4 border-0 rounded-4">
-                    <h3 class="text-center mb-4" style="font-family: 'Righteous', cursive; color: orange;">
-                        Iniciar Sesión</h3>
-                    <form method="post" action="/login">
-                        <div class="mb-3">  
-                            <label for="username" class="form-label">Usuario</label>
-                            <input type="text" class="form-control" id="username" name="username"
-                                placeholder="Ingresa tu nombre" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Ingresa tu contraseña" required>
-                        </div>
-                        <div class="d-grid mb-3">
-                            <button type="submit" class="btn btn-dark">Ingresar</button>
-                        </div>
-                        <div class="text-center">
-                            <span>¿No tienes una cuenta?</span>
-                            <a href="/registro" class="text-decoration-none btn btn-success" style="color: orange;">
-                                Crear cuenta</a>
-                        </div>
-                    </form>
+
+    <section class="login-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card shadow-lg p-4 border-0 rounded-4">
+                        <h3 class="text-center mb-4 login-title">Iniciar Sesión</h3>
+                        <!-- Se agrega la acción y método al formulario -->
+                        <form th:action="@{/login}" method="post">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Usuario</label>
+                               
+                                <input type="text" class="form-control" id="username" name="username1"
+                                    placeholder="Ingresa tu usuario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                
+                                <input type="password" class="form-control" id="password" name="password1"
+                                    placeholder="Ingresa tu contraseña" required>
+                            </div>
+                            <div class="d-grid mb-3 mt-4">
+                                
+                                <button type="submit" class="btn btn-dark">Ingresar</button>
+                            </div>
+                            <div class="text-center mt-3 no-account-text">
+                                ¿No tienes una cuenta? <a th:href="@{/usuarios/registro}" class="create-account-link">Crear cuenta</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-
-
-
-    
-
-
-
+    </section>
 
 
 
@@ -179,15 +174,18 @@
                 <!-- Nosotros -->
                 <div class="col-md-3">
                     <h5 class="text-uppercase mb-4">Nosotros</h5>
-                    <a href="#" class="text-white d-block mb-2">Historia</a>
-                    <a href="#" class="text-white d-block mb-2">Trabaja con Nosotros</a>
+                    <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Historia</a>
+                    <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Trabaja con
+                        Nosotros</a>
                 </div>
 
                 <!-- Legales -->
                 <div class="col-md-2">
                     <h5 class="text-uppercase mb-4">Legales</h5>
-                    <a href="#" class="text-white d-block mb-2">Políticas de privacidad</a>
-                    <a href="#" class="text-white d-block mb-2">Términos y condiciones</a>
+                    <a th:href="@{/politicas}" class="text-white text-decoration-none d-block mb-2">Políticas de
+                        privacidad</a>
+                    <a th:href="@{/terminos}" class="text-white text-decoration-none d-block mb-2">Términos y
+                        condiciones</a>
                 </div>
 
                 <!-- Atención -->
@@ -214,8 +212,12 @@
         </div>
     </footer>
 
+
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 
 </html>

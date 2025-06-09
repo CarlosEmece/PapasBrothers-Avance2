@@ -1,196 +1,536 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Papas Broather</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/loginadmin.css}">
+  <meta charset="UTF-8">
+  <title>Panel de Administración - Papas Broather</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" th:href="@{/css/loginadmin.css}">
+
+  <script>
+    // Funciones para mostrar/ocultar secciones
+    function showSection(sectionId) {
+      // Oculta todas las secciones con clase "section"
+      document.querySelectorAll('.section').forEach(function (sec) {
+        sec.style.display = "none";
+      });
+      // Muestra la sección deseada
+      var section = document.getElementById(sectionId);
+      if (section) {
+        section.style.display = "block";
+      }
+    }
+
+    function cerrar() {
+      
+      document.querySelectorAll('.section').forEach(function (sec) {
+        sec.style.display = "none";
+      });
+    }
+  </script>
 </head>
 
+
 <body>
-    <nav>
-        <button onclick="showSection('clientes')">Clientes</button>
-        <button onclick="showSection('usuarios')">Usuarios</button>
-        <button onclick="showSection('productos')">Productos</button>
-        <button onclick="showSection('promociones')">Promociones</button>
-        <button onclick="showSection('sugerencias')">Sugerencias</button>
-        <button onclick="cerrar()">Cerrar</button>
-    </nav>
 
-    <div id="clientes" class="section">
-        <h2>Listado de Clientes</h2>
-        <table>
-            <tr>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Acciones</th>
-            </tr>
-            <tr>
-                <td>Juan Pérez</td>
-                <td>juan@example.com</td>
-                <td>123456789</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Eliminar</button>
-                </td>
-            </tr>
-            <tr>
-                <td>María García</td>
-                <td>maria@example.com</td>
-                <td>987654321</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Eliminar</button>
-                </td>
-            </tr>
-        </table>
+  
+  <!-- Menú de navegación -->
+  <nav class="navbar navbar-light bg-light mb-3">
+    <div class="container">
+
+      <button onclick="showSection('usuarios')" class="btn btn-outline-primary">Usuarios</button>
+      <button onclick="showSection('contactos')" class="btn btn-outline-primary">contacto</button>
+      <button onclick="showSection('promociones')" class="btn btn-outline-primary">Promociones</button>
+      <button onclick="showSection('sugerencias')" class="btn btn-outline-primary">Sugerencias</button>
+      <button class="btn" style="background-color: #c0392b;" data-bs-toggle="modal"
+        data-bs-target="#cerrarModal">Cerrar</button>
+
     </div>
+  </nav>
 
-    <div id="usuarios" class="section">
-        <h2>Listado de Usuarios</h2>
-        <table>
-            <tr>
-                <th>ID Usuario</th>
-                <th>Nombre de Usuario</th>
-                <th>Rol</th>
-                <th>Último Acceso</th>
-                <th>Acciones</th>
-            </tr>
-            <tr>
-                <td>001</td>
-                <td>admin</td>
-                <td>Administrador</td>
-                <td>2025-06-05</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Eliminar</button>
-                </td>
-            </tr>
-            <tr>
-                <td>002</td>
-                <td>user123</td>
-                <td>Editor</td>
-                <td>2025-06-04</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Eliminar</button>
-                </td>
-            </tr>
-        </table>
+
+  <!-- Modal de confirmación para cerrar sesión -->
+  <div class="modal fade" id="cerrarModal" tabindex="-1" aria-labelledby="cerrarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="cerrarModalLabel">¿Deseas cerrar sesión?</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          Esta acción te llevará a la pantalla de inicio
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <a href="/inicio" class="btn btn-danger">Sí, cerrar sesión</a>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div id="productos" class="section">
-        <h2>Listado de Productos</h2>
-        <table>
-            <tr>
-                <th>Nombre Producto</th>
-                <th>Categoría</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Acciones</th>
-            </tr>
-            <tr>
-                <td>Laptop Gamer</td>
-                <td>Electrónica</td>
-                <td>$1200</td>
-                <td>15</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Eliminar</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Mouse Óptico</td>
-                <td>Periféricos</td>
-                <td>$25</td>
-                <td>100</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Eliminar</button>
-                </td>
-            </tr>
-        </table>
+
+  <!-- Sección Contacto -->
+  <div id="contactos" class="section" style="display: none;">
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Contactos - Papas Broather</h2>
+      </div>
+      <div class="d-flex justify-content-end mb-3">
+        <a href="/contactos/exportar" class="btn btn-success">
+          <i class="fas fa-download"></i> Descargar Excel de Contactos
+        </a>
+      </div>
+      <!-- Tabla de contactos -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre y Apellido</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Motivo</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="contacto : ${contactos}">
+            <td th:text="${contacto.id}"></td>
+            <td>
+              <input type="text" class="form-control" th:value="${contacto.nombreApellido}"
+                th:attr="data-id=${contacto.id}, data-field='nombreApellido'">
+            </td>
+            <td>
+              <input type="email" class="form-control" th:value="${contacto.correo}"
+                th:attr="data-id=${contacto.id}, data-field='correo'">
+            </td>
+            <td>
+              <input type="tel" class="form-control" th:value="${contacto.telefono}"
+                th:attr="data-id=${contacto.id}, data-field='telefono'">
+            </td>
+            <td>
+              <select class="form-select" th:attr="data-id=${contacto.id}, data-field='motivo'">
+                <option value="queja" th:selected="${contacto.motivo == 'queja'}">Queja</option>
+                <option value="sugerencia" th:selected="${contacto.motivo == 'sugerencia'}">Sugerencia</option>
+                <option value="consulta" th:selected="${contacto.motivo == 'consulta'}">Consulta</option>
+              </select>
+            </td>
+            <td>
+              <textarea class="form-control" rows="3" th:text="${contacto.descripcion}"
+                th:attr="data-id=${contacto.id}, data-field='descripcion'"></textarea>
+            </td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-success btn-sm" onclick="guardarCambiosContacto(this)">
+                  <i class="fas fa-save"></i>
+                </button>
+                <!-- Botón que llama a la función eliminarContacto pasando el id -->
+                <button type="button" class="btn btn-danger btn-sm" th:onclick="|eliminarContacto(${contacto.id})|">
+                  <i class="fas fa-trash"></i>
+                </button>
+
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 
-    <div id="promociones" class="section">
-        <h2>Listado de Promociones</h2>
-        <table>
-            <tr>
-                <th>Nombre Promoción</th>
-                <th>Descuento</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Fin</th>
-                <th>Acciones</th>
-            </tr>
-            <tr>
-                <td>Oferta Verano</td>
-                <td>20%</td>
-                <td>2025-07-01</td>
-                <td>2025-07-31</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Eliminar</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Black Friday</td>
-                <td>50%</td>
-                <td>2025-11-29</td>
-                <td>2025-12-02</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Eliminar</button>
-                </td>
-            </tr>
-        </table>
+
+
+
+  <!-- Sección Usuarios -->
+  <div id="usuarios" class="section" style="display: none;">
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Usuarios - Papas Broather</h2>
+      </div>
+
+      <h2>Listado de Usuarios</h2>
+      <!-- Depuración: cantidad de usuarios -->
+      <p>Usuarios encontrados: <span th:text="${#lists.size(usuarios)}"></span></p>
+
+      <a th:href="@{/usuarios/exportar}" class="btn btn-danger">
+        <i class="fas fa-file-pdf"></i> Descargar Lista de Usuarios (PDF)
+      </a>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre Completo</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.id}"></td>
+            <td>
+              <input type="text" class="form-control" th:value="${usuario.nombreCompleto}"
+                th:attr="data-id=${usuario.id}, data-field='nombreCompleto'" />
+            </td>
+            <td>
+              <input type="email" class="form-control" th:value="${usuario.email}"
+                th:attr="data-id=${usuario.id}, data-field='email'" />
+            </td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-success btn-sm" onclick="guardarCambiosUsuario(this)">
+                  <i class="fas fa-save"></i>
+                </button>
+                <a th:href="@{/usuarios/eliminar/{id}(id=${usuario.id})}" class="btn btn-danger btn-sm"
+                  onclick="return confirm('¿Estás seguro de eliminar este usuario?')">
+                  <i class="fas fa-trash"></i> Eliminar
+                </a>
+
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 
 
-    <div id="sugerencias" class="section">
-        <h2>Listado de Productos</h2>
-        <table>
-            <tr>
-                <th>Nombre Producto</th>
-                <th>Categoría</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Acciones</th>
-            </tr>
-            <tr>
-                <td>Laptop Gamer</td>
-                <td>Electrónica</td>
-                <td>$1200</td>
-                <td>15</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Eliminar</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Mouse Óptico</td>
-                <td>Periféricos</td>
-                <td>$25</td>
-                <td>100</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Eliminar</button>
-                </td>
-            </tr>
-        </table>
+
+  <!-- Sección Promociones -->
+  <div id="promociones" class="section" style="display:none;">
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Promociones - Papas Broather</h2>
+        <!-- Botón que abre el modal para agregar promoción -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPromocion">
+          Agregar Promoción
+        </button>
+        <!-- botón de descarga de Excel -->
+        <div class="d-flex justify-content-end mb-3">
+          <a href="/promociones/exportar" class="btn btn-success">
+            <i class="fas fa-download"></i> Descargar Excel
+          </a>
+        </div>
+      </div>
+      <div class="row g-4">
+        <!-- Iteración sobre cada promoción para mostrar sus tarjetas -->
+        <div class="col-lg-3 col-md-6" th:each="promo : ${promociones}">
+          <div class="promo-card h-100 border">
+            <div class="promo-img-container">
+              <img th:src="@{${promo.imagen}}" class="img-fluid" th:alt="${promo.nombre}">
+            </div>
+            <div class="promo-body p-2">
+              <h3 th:text="${promo.nombre}"></h3>
+              <p th:text="${promo.descripcion}"></p>
+              <div class="promo-price">
+                <span th:text="'S/ ' + ${promo.precio}"></span>
+              </div>
+              <div class="btn-group mt-2">
+                <button type="button" class="btn btn-success btn-sm" th:onclick="|editarPromocion(this, ${promo.id})|">
+                  <i class="fas fa-edit"></i> Editar
+                </button>
+                <button type="button" class="btn btn-danger btn-sm" th:onclick="|eliminarPromocion(${promo.id})|">
+                  <i class="fas fa-trash"></i> Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
 
-        <!-- Scripts -->
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-         <script th:src="@{/js/loginadmin.js}"></script>
+  <!-- Modal para Agregar/Editar Promoción -->
+  <div class="modal fade" id="modalPromocion" tabindex="-1" aria-labelledby="modalPromocionLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalPromocionLabel">Agregar Promoción</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
 
+        <div class="modal-body">
+          <form id="formPromocion" th:action="@{/promociones/enviar}" method="post">
+            <div class="mb-3">
+              <label for="promoNombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="promoNombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+              <label for="promoDescripcion" class="form-label">Descripción</label>
+              <textarea class="form-control" id="promoDescripcion" name="descripcion" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="promoPrecio" class="form-label">Precio</label>
+              <input type="number" step="0.01" class="form-control" id="promoPrecio" name="precio" required>
+            </div>
+            <div class="mb-3">
+              <label for="promoImagen" class="form-label">Imagen</label>
+              <!-- select para seleccionar una imagen precargada -->
+              <select class="form-select" id="promoImagen" name="imagen" required>
+                <option value="/img/promocion1.jpeg">Promoción 1</option>
+                <option value="/img/promocion2.jpeg">Promoción 2</option>
+                <option value="/img/promocion3.webp">Promoción 3</option>
+                <option value="/img/promocion4.jpeg">Promoción 4</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Promoción</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Sección Sugerencias -->
+  <div id="sugerencias" class="section" style="display: none;">
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Sugerencias - Papas Broather</h2>
+      </div>
+      <h4>Listado de Sugerencias</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Descripción</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="sugerencia : ${sugerencias}">
+            <td th:text="${sugerencia.id}"></td>
+            <td>
+              <input type="text" class="form-control" th:value="${sugerencia.nombre}"
+                th:attr="data-id=${sugerencia.id}, data-field='nombre'" />
+            </td>
+            <td>
+              <input type="email" class="form-control" th:value="${sugerencia.email}"
+                th:attr="data-id=${sugerencia.id}, data-field='email'" />
+            </td>
+            <td>
+              <textarea class="form-control" rows="2" th:text="${sugerencia.descripcion}"
+                th:attr="data-id=${sugerencia.id}, data-field='descripcion'"></textarea>
+            </td>
+            <td>
+              <span th:text="${#dates.format(sugerencia.fechaCreacion, 'dd/MM/yyyy HH:mm')}"></span>
+            </td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-success btn-sm" onclick="guardarCambios(this)">
+                  <i class="fas fa-save"></i>
+                </button>
+                <a th:href="@{/sugerencias/eliminar/{id}(id=${sugerencia.id})}" class="btn btn-danger btn-sm"
+                  onclick="return confirm('¿Estás seguro de que deseas eliminar esta sugerencia?')">
+                  <i class="fas fa-trash"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- JavaScript para actualización de usuarios -->
+  <script>
+    function guardarCambiosUsuario(button) {
+      console.log("Guardando cambios de usuario...");
+      const row = button.closest('tr');
+      const inputs = row.querySelectorAll('input');
+      const usuario = {
+        id: inputs[0].dataset.id,
+        nombreCompleto: inputs[0].value,
+        email: inputs[1].value
+      };
+      fetch('/usuarios/usuarios/actualizar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(usuario)
+      })
+        .then(response => {
+          if (response.ok) {
+            alert('Usuario actualizado correctamente');
+            location.reload();
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  </script>
+
+
+
+  <!-- JavaScript para actualización de sugerencias -->
+  <script>
+    function guardarCambios(button) {
+      console.log("Guardando cambios de sugerencia...");
+      const row = button.closest('tr');
+      // Se seleccionan todos los inputs y textareas de la fila
+      const inputs = row.querySelectorAll('input, textarea');
+      // Existirá un orden: nombre, email, descripción.
+      const sugerencia = {
+        id: inputs[0].dataset.id,
+        nombre: inputs[0].value,
+        email: inputs[1].value,
+        descripcion: inputs[2].value
+      };
+
+      fetch('/sugerencias/actualizar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sugerencia)
+      })
+        .then(response => {
+          if (response.ok) {
+            alert('Sugerencia actualizada correctamente');
+            location.reload();
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  </script>
+
+
+
+  <!-- JavaScript para edición y eliminación de contactos -->
+  <script>
+    // Función para guardar cambios 
+    function guardarCambiosContacto(button) {
+      const row = button.closest('tr');
+      const inputs = row.querySelectorAll('input, select, textarea');
+      // Se asume el siguiente orden: nombreApellido, correo, teléfono, motivo, descripción.
+      let contacto = {
+        id: inputs[0].dataset.id,
+        nombreApellido: inputs[0].value,
+        correo: inputs[1].value,
+        telefono: inputs[2].value,
+        motivo: inputs[3].value,
+        descripcion: inputs[4].value
+      };
+
+      fetch('/contactos/actualizar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contacto)
+      })
+        .then(response => {
+          if (response.ok) {
+            alert('Contacto actualizado');
+            location.reload();
+          } else {
+            alert('Error al actualizar el contacto');
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+
+    // Función para eliminar un contacto 
+    function eliminarContacto(id) {
+      if (confirm("¿Está seguro de que desea eliminar este contacto?")) {
+        fetch('/contactos/eliminar/' + id, {
+          method: 'GET'
+        })
+          .then(response => {
+            if (response.ok) {
+              alert("Contacto eliminado");
+              location.reload();
+            } else {
+              alert("Error al eliminar el contacto");
+            }
+          })
+          .catch(error => console.error('Error:', error));
+      }
+    }
+  </script>
+
+
+
+  <!-- JavaScript para edición y eliminación de promociones -->
+
+  <script>
+    // Función para editar una promoción 
+    function editarPromocion(button, id) {
+      console.log("Editando promoción con id:", id);
+
+      let nuevoNombre = prompt("Ingrese nuevo nombre para la promoción:");
+      if (nuevoNombre == null || nuevoNombre.trim() === "") {
+        alert("El nombre es obligatorio.");
+        return;
+      }
+
+      let nuevaDescripcion = prompt("Ingrese nueva descripción para la promoción:");
+      if (nuevaDescripcion == null || nuevaDescripcion.trim() === "") {
+        alert("La descripción es obligatoria.");
+        return;
+      }
+
+      let nuevoPrecio = prompt("Ingrese nuevo precio para la promoción (solo números):");
+      if (nuevoPrecio == null || nuevoPrecio.trim() === "" || isNaN(nuevoPrecio)) {
+        alert("El precio debe ser un número válido.");
+        return;
+      }
+
+      let data = {
+        id: id,
+        nombre: nuevoNombre.trim(),
+        descripcion: nuevaDescripcion.trim(),
+        precio: parseFloat(nuevoPrecio)
+      };
+
+      fetch('/promociones/actualizar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(response => {
+          if (response.ok) {
+            alert('Promoción actualizada');
+            location.reload();
+          } else {
+            alert('Error al actualizar la promoción');
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Función para eliminar una promoción 
+    function eliminarPromocion(id) {
+      if (confirm("¿Está seguro de que desea eliminar esta promoción?")) {
+        fetch('/promociones/eliminar/' + id, {
+          method: 'GET'
+        })
+          .then(response => {
+            if (response.ok) {
+              alert("Promoción eliminada");
+              location.reload();
+            } else {
+              alert("Error al eliminar la promoción");
+            }
+          })
+          .catch(error => console.error('Error:', error));
+      }
+    }
+  </script>
+
+
+
+
+
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

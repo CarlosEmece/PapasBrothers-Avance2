@@ -1,0 +1,173 @@
+
+/* cuerpo de la pagina */
+body {
+    background-color: #CC5500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer; 
+}
+
+/* Fondo del restaurante */
+.fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url("[[@{/img/fondo.png}]]");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+/* Posiciones iniciales */
+.papas, .hamburguesa {
+    position: absolute;
+    width: 50px; 
+    height: auto; 
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.papas img,
+.hamburguesa img {
+    width: 910px; 
+    height: auto; 
+   
+}
+
+/* Movimiento inicial */
+.papas {
+    left: 0px;
+    animation: mover 15s linear infinite alternate;
+    
+}
+
+.hamburguesa {
+    left: -200px;
+    animation: mover 10s linear infinite alternate;
+}
+
+/* Animación de movimiento */
+@keyframes mover {
+    0% { left: 0px; }
+    100% { left: 90%; }
+}
+
+
+.boton {
+    position: absolute;
+    top: 93%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.boton:hover {
+    background-color: #c0392b;
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.boton:active {
+    background-color: #a93226;
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+
+
+
+/* Estilo de la cabecera */
+/* Ubicación en la parte superior */
+header {
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Diseño atractivo del título */
+.titulo {
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Comic Sans MS', cursive, sans-serif; 
+    animation: parpadeo 1s infinite alternate, vibrar 0.5s infinite ease-in-out;
+}
+
+
+
+/* Pantallas pequeñas (celulares, hasta 768px de ancho) */
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 8vw; 
+    }
+
+    .papas,
+    .hamburguesa {
+        width: 40vw; 
+        top: 60%; 
+    }
+
+    .papas img,
+    .hamburguesa img {
+        width: 100%; 
+    }
+
+    .boton {
+        width: 80%;
+        font-size: 18px; 
+        padding: 10px 20px;
+        top: 90%; 
+    }
+
+    @keyframes mover {
+        0% { left: 0px; }
+        100% { left: calc(100% - 40vw); } 
+    }
+
+    .hamburguesa {
+        left: -40vw;
+    }
+}
+
+/* Pantallas medianas (tabletas, entre 769px y 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .titulo {
+        font-size: 6vw;
+    }
+
+    .papas,
+    .hamburguesa {
+        width: 30vw;
+    }
+
+    @keyframes mover {
+        0% { left: 0px; }
+        100% { left: calc(100% - 30vw); }
+    }
+
+    .hamburguesa {
+        left: -30vw;
+    }
+
+    .boton {
+        font-size: 20px;
+        padding: 12px 25px;
+    }
+}
+

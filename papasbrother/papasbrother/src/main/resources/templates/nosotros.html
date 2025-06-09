@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Como Pa Pobre</title>
+    <title>Papas Broather</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
                 <div class="container-fluid">
                     <!-- Logo o título del negocio -->
                     <a class="navbar-brand" href="#">
-                        <img th:src="@{/img/LogoPapaB.png}" alt="Logo" width="40" height="40"
+                        <img th:src="@{/img/LogoPapaB.png}" alt="Logo" width="100" height="63"
                             class="d-inline-block align-text-top">
                         <h5 class="offcanvas-title">
                             <span style="color: red;">Papas</span>
@@ -60,7 +60,7 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/">Inicio</a>
+                                    <a class="nav-link" th:href="@{/inicio}">Inicio</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link" th:href="@{/login}">Iniciar Sesión</a></li>
 
@@ -77,13 +77,13 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Promociones</a>
+                                    <a class="nav-link" th:href="@{/promociones}">Promociones</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Nosotros</a>
+                                    <a class="nav-link active" href="#">Nosotros</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" th:href="@{/contacto}">Contacto</a>
+                                    <a class="nav-link" th:href="@{/contacto}">Contacto</a>
                                 </li>
                             </ul>
 
@@ -112,55 +112,88 @@
 
 
 
+
     <!-- Sección Nosotros -->
-    <!-- Sección Nosotros -->
-<section class="nosotros-section">
-    <div class="container">
-        <h2 class="section-title">Sobre Nosotros</h2>
-        <div class="nosotros-content">
-            <div class="nosotros-text">
-                <h3>Nuestra Historia</h3>
-                <p>
-                    Papas Brothers es una empresa de comida rápida especializada en la preparación de pollos broaster, hamburguesas y otros platos populares. 
-                    Nació con el objetivo de ofrecer un servicio ágil, sabroso y accesible para todos, destacando por la jugosidad y sabor de sus productos.
-                </p>
-                <p>
-                    Cada plato que servimos es el resultado de pasión, creatividad y una selección cuidadosa de ingredientes frescos. Nuestro equipo trabaja 
-                    cada día para superar las expectativas y crear momentos inolvidables.
-                </p>
-                <a href="/menu" class="btn-explorar">Descubre nuestro menú</a>
+    <section class="nosotros-section">
+        <div class="container">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            <div class="nosotros-content">
+                <div class="nosotros-text">
+                    <h3>Nuestra Historia</h3>
+                    <p>
+                        Papas Brothers es una empresa de comida rápida especializada en la preparación de pollos
+                        broaster, hamburguesas y otros platos populares.
+                        Nació con el objetivo de ofrecer un servicio ágil, sabroso y accesible para todos, destacando
+                        por la jugosidad y sabor de sus productos.
+                    </p>
+                    <p>
+                        Cada plato que servimos es el resultado de pasión, creatividad y una selección cuidadosa de
+                        ingredientes frescos. Nuestro equipo trabaja
+                        cada día para superar las expectativas y crear momentos inolvidables.
+                    </p>
+                    <a href="/menu" class="btn-explorar">Descubre nuestro menú</a>
+                </div>
+                <div class="nosotros-image">
+                    <img src="/img/nosotros.png" alt="foto de local">
+                </div>
             </div>
-            <div class="nosotros-image">
-                <img src="/img/nosotros.png" alt="foto de local">
+        </div>
+    </section>
+
+
+
+    <!-- Misión y Visión -->
+    <div class="mision-vision">
+        <div class="card-mision">
+            <i class="fas fa-bullseye"></i>
+            <h4>Misión</h4>
+            <p>Ofrecer comida rápida, rica y accesible para todos, con porciones generosas y sabor casero.</p>
+        </div>
+
+        <div class="card-vision">
+            <i class="fas fa-eye"></i>
+            <h4>Visión</h4>
+            <p>Ser la opción favorita de comida rápida en Ventanilla y seguir creciendo con cercanía y sabor.</p>
+        </div>
+    </div>
+
+    <!-- Valores -->
+    <div class="valores">
+        <h3>Nuestros Valores</h3>
+        <div class="lista-valores">
+            <div class="valor-item">
+                <img src="/img/nosotros1.png" alt="cercania">
+                <h5>Cercanía</h5>
+                <p>Tratamos a cada cliente como en casa, con atención cálida y auténtica.</p>
+            </div>
+            <div class="valor-item">
+                <img src="/img/nosotros2.png" alt="calidad">
+                <h5>Calidad</h5>
+                <p>Ofrecemos buena comida sin que tengas que pagar de más.</p>
+            </div>
+            <div class="valor-item">
+                <img src="/img/nosotros3.png" alt="esfuerzo">
+                <h5>Esfuerzo</h5>
+                <p>Crecemos con trabajo diario y pasión por lo que hacemos.</p>
             </div>
         </div>
     </div>
-</section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- Sección Destacados -->
+    <div class="logros-destacados">
+        <div class="logro">
+            <h4>+5000</h4>
+            <p>Clientes satisfechos</p>
+        </div>
+        <div class="logro">
+            <h4>98%</h4>
+            <p>Evaluaciones positivas</p>
+        </div>
+        <div class="logro">
+            <h4>24/7</h4>
+            <p>Soporte al cliente</p>
+        </div>
+    </div>
 
 
     <!-- FOOTER -->
@@ -192,8 +225,8 @@
                 <!-- Legales -->
                 <div class="col-md-2">
                     <h5 class="text-uppercase mb-4">Legales</h5>
-                    <a href="#" class="text-white d-block mb-2">Políticas de privacidad</a>
-                    <a href="#" class="text-white d-block mb-2">Términos y condiciones</a>
+                    <a th:href="@{/politicas}" class="text-white text-decoration-none d-block mb-2">Políticas de privacidad</a>
+                    <a th:href="@{/terminos}" class="text-white text-decoration-none d-block mb-2">Términos y condiciones</a>
                 </div>
 
                 <!-- Atención -->
