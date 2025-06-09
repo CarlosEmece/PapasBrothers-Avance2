@@ -35,7 +35,7 @@ public class ClienteControlador {
 
     @GetMapping("/editar/{id}")
     public String editarCliente(@PathVariable Integer id, Model model) {
-        Optional<Cliente> cliente = clienteService.obtenerPorId(id);
+        Optional<Cliente> cliente = clienteService.buscarPorId(id);
         if (cliente.isPresent()) {
             model.addAttribute("cliente", cliente.get());
             return "clientes/formulario";

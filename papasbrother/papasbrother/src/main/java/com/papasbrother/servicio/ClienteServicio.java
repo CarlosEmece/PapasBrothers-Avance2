@@ -9,16 +9,20 @@ import java.util.Optional;
 
 @Service
 public class ClienteServicio {
-    
-    @Autowired
+      @Autowired
     private ClienteRepositorio clienteRepository;
 
     public List<Cliente> listarTodos() {
         return clienteRepository.findAll();
     }
 
-    public Optional<Cliente> obtenerPorId(Integer id) {
+    public Optional<Cliente> buscarPorId(Integer id) {
         return clienteRepository.findById(id);
+    }
+
+    // Nuevo método para buscar cliente por email
+    public Optional<Cliente> buscarPorEmail(String email) {
+        return clienteRepository.findByEmail(email);
     }
 
     public Cliente guardar(Cliente cliente) {
@@ -28,4 +32,5 @@ public class ClienteServicio {
     public void eliminar(Integer id) {
         clienteRepository.deleteById(id);
     }
+    
 }

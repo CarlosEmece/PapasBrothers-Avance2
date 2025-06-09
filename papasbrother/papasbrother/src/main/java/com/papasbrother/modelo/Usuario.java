@@ -17,7 +17,7 @@ public class Usuario {
 
     private String nombreCompleto;
     private String email;
-    private String contraseña;
+    private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

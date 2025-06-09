@@ -1,11 +1,12 @@
 package com.papasbrother.modelo;
 
+
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "detalle_compras")
+@Table(name = "detalle_compra")
 public class DetalleCompra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,5 +21,7 @@ public class DetalleCompra {
     private Producto producto;
 
     private Integer cantidad;
+
     private Double precio;
+
 }

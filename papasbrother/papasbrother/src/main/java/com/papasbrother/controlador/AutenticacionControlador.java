@@ -29,7 +29,7 @@ public class AutenticacionControlador {
 
     @PostMapping("/registro")
     public String registrarUsuario(@ModelAttribute Usuario usuario) {
-        usuario.setContraseña(passwordEncoder.encode(usuario.getContraseña()));
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 
         Rol rolUsuario = rolRepositorio.findByNombre("ROLE_USER");
         if (rolUsuario == null) {

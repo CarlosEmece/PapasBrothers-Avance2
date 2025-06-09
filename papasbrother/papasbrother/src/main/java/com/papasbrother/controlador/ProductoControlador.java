@@ -35,7 +35,7 @@ public class ProductoControlador {
 
     @GetMapping("/editar/{id}")
     public String editarProducto(@PathVariable Integer id, Model model) {
-        Optional<Producto> producto = productoService.obtenerPorId(id);
+        Optional<Producto> producto = productoService.buscarPorId(id);
         if (producto.isPresent()) {
             model.addAttribute("producto", producto.get());
             return "productos/formulario";
