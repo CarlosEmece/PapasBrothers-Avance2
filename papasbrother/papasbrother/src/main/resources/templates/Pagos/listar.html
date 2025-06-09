@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pagos</title>
+</head>
+<body>
+    <h1>Lista de Pagos</h1>
+    <a th:href="@{/pagos/nuevo}">Nuevo Pago</a>
+    <table border="1">
+        <tr><th>ID</th><th>Monto</th><th>Acciones</th></tr>
+        <tr th:each="pago : ${pagos}">
+            <td th:text="${pago.idPago}"></td>
+            <td th:text="${pago.monto}"></td>
+            <td>
+                <a th:href="@{/pagos/editar/{id}(id=${pago.idPago})}">Editar</a> |
+                <a th:href="@{/pagos/eliminar/{id}(id=${pago.idPago})}">Eliminar</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

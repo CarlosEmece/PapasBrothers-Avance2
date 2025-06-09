@@ -18,6 +18,11 @@ public class Usuario {
 
     @Column(name = "nombre_completo", nullable = false)
     private String nombreCompleto;
+<<<<<<< HEAD
+=======
+    private String email;
+    private String password;
+>>>>>>> rama-Carlos
 
     @Column(nullable = false, unique = true)
     private String email;
