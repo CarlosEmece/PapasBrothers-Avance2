@@ -1,0 +1,27 @@
+<!-- error.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="alert alert-danger">
+            <h4>Error</h4>
+            <!-- Mensaje de error breve -->
+            <p th:text="${errorMessage}">Mensaje de error</p>
+            
+            <!-- Se muestra el detalle del error si la variable "trace" existe -->
+            <div th:if="${trace != null}">
+                <h5>Detalles del error:</h5>
+                <pre th:text="${trace}"></pre>
+            </div>
+            
+            <a href="/" class="btn btn-primary">Volver al inicio</a>
+        </div>
+    </div>
+</body>
+</html>
+

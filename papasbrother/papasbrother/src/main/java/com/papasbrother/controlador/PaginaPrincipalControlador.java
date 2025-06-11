@@ -7,48 +7,51 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PaginaPrincipalControlador {
     @GetMapping("/")
     public String mostrarIndex() {
-        return "index"; 
+        return "index";
     }
 
     @GetMapping("/inicio")
     public String mostrarInicio() {
-        return "inicio"; 
+        return "inicio";
     }
 
     @GetMapping("/login")
     public String mostrarLogin() {
-        return "login"; 
+        return "login";
     }
-
-    @GetMapping("/menu")
-    public String mostrarMenu() {
-        return "menu"; 
-    }
+    
 
     @GetMapping("/contacto")
     public String mostrarContacto() {
-        return "contacto"; 
+        return "contacto";
     }
 
     @GetMapping("/nosotros")
     public String mostrarNosotros() {
-        return "nosotros"; 
+        return "nosotros";
     }
 
     @GetMapping("/promociones")
     public String mostrarPromociones() {
-        return "promociones"; 
+        return "promociones";
     }
 
     @GetMapping("/terminos")
     public String mostrarTerminos() {
-        return "terminos"; 
+        return "terminos";
     }
 
     @GetMapping("/politicas")
     public String mostrarPoliticas() {
-        return "politicas"; 
+        return "politicas";
     }
 
+    @GetMapping("/boleta")
+    public String mostrarBoleta() {
+        return "boleta";
+    }
+    
+   
+    
 
 }

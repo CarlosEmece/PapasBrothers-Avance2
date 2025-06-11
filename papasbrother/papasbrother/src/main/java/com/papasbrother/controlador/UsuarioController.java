@@ -37,10 +37,17 @@ public class UsuarioController {
         return "registro";
     }
 
-    
     // 1. Procesa el registro y guarda la cuenta del usuario en la base de datos
     @PostMapping("/registro/enviar")
-    public String registrarUsuario(@ModelAttribute Usuario usuario) {
+    public String registrarUsuario(@ModelAttribute Usuario usuario, Model model) {
+        // Verificar si el correo ya está registrado
+        if (usuarioService.findByEmail(usuario.getEmail()) != null) {
+            model.addAttribute("errorMessage", "El correo ya está registrado.");
+            model.addAttribute("usuario", usuario); // Para que se mantengan los datos ingresados
+            return "registro"; // Retornar a la vista de registro
+        }
+
+        // Si no existe, continuar y guardar el usuario
         Timestamp now = Timestamp.from(Instant.now());
         usuario.setCreatedAt(now);
         usuario.setUpdatedAt(now);
@@ -48,7 +55,6 @@ public class UsuarioController {
 
         return "redirect:/inicio";
     }
-
 
     // 2. Actualiza un usuario
     @PostMapping("/usuarios/actualizar")
@@ -65,14 +71,12 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
 
-
     // 3. Elimina un usuario
     @GetMapping("/eliminar/{id}")
     public String eliminarUsuario(@PathVariable Long id) {
         usuarioService.deleteUsuario(id);
         return "redirect:/inicio";
     }
-
 
     // 4. Para listar
     @GetMapping("/administradorpanel")
@@ -83,7 +87,6 @@ public class UsuarioController {
         model.addAttribute("usuarios", usuarios);
         return "administradorpanel";
     }
-
 
     // 5. Para exportar en PDF
     @GetMapping("/exportar")

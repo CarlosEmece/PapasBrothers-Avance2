@@ -15,76 +15,9 @@
 
 <body>
 
-  <!-- LOGO Y NOMBRE A LA IZQUIERDA -->
-  <nav class="navbar navbar-dark bg-dark fixed-top">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
 
-      <!-- Logo o título del negocio -->
-      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-        <img th:src="@{/img/LogoPapaB.png}" alt="Logo" width="100" height="63">
-        <h5 class="m-0">
-          <span style="color: red;">Papas</span>
-          <span style="color: orange;">Brother</span>
-        </h5>
-      </a>
-
-      <!-- Ícono de carrito y botón del menú -->
-      <div class="d-flex align-items-center gap-3">
-        <a href="#" class="text-warning fs-4" title="Carrito de compras">
-          <i class="fas fa-shopping-cart"></i>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
-          aria-controls="offcanvasDarkNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-
-      <!-- Menú desplegable lateral -->
-      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
-        aria-labelledby="offcanvasDarkNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title">
-            <span style="color: red;">Papas</span>
-            <span style="color: orange;">Brother</span>
-          </h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-            aria-label="Cerrar"></button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav flex-grow-1 pe-3">
-            <li class="nav-item"><a class="nav-link" th:href="@{/inicio}">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/login}">Iniciar Sesión</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Menú</a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" th:href="@{/menu}">Hamburguesas</a></li>
-                <li><a class="dropdown-item" th:href="@{/menu}">Alitas</a></li>
-                <li><a class="dropdown-item" th:href="@{/menu}">Salchipapas</a></li>
-                <li><a class="dropdown-item" th:href="@{/menu}">Pollos Broaster</a></li>
-              </ul>
-            </li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/promociones}">Promociones</a></li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/nosotros}">Nosotros</a></li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/contacto}">Contacto</a></li>
-          </ul>
-
-          <!-- Redes sociales -->
-          <div class="social-menu mt-4">
-            <h6 class="text-secondary text-center mb-3">Redes Sociales</h6>
-            <div class="d-flex justify-content-center gap-3">
-              <a href="https://www.facebook.com/comopa.pobre/about" class="text-primary"><i
-                  class="fab fa-facebook fa-lg"></i></a>
-              <a href="https://www.tiktok.com/@como_papobre" style="color: #000000;"><i
-                  class="fab fa-tiktok fa-lg"></i></a>
-              <a href="https://www.instagram.com/como_papobre/" style="color: #C13584;"><i
-                  class="fab fa-instagram fa-lg"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-
+  <!-- Navbar -->
+  <nav th:replace="~{componentes/navbar :: nav-bar}"></nav>
 
   <!-- EL MENU -->
 
@@ -96,50 +29,75 @@
   <div class="container mt-5 mb-5">
     <div class="row row-cols-1 row-cols-md-4 g-4">
       <!-- Item 1 -->
-      <div class="col">
+      <div th:each="prod : ${productos}" class="col">
         <div class="card h-100">
-          <img src="img/broaaster pecho.webp" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
+          <img th:src="@{/img/{f}(f=${prod.nombre.toLowerCase()})}" class="card-img-top" alt="">
           <div class="card-body text-center">
-            <h5 class="card-title">Broaster Pecho</h5>
-            <p class="card-text">S/ 14.00</p>
-            <a href="#" class="btn btn-warning">Pedir ahora</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card h-100">
-          <img src="img/broaster encuentrop.avif" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
-          <div class="card-body text-center">
-            <h5 class="card-title">Broaster Encuentro</h5>
-            <p class="card-text">S/ 13.00</p>
-            <a href="#" class="btn btn-warning">Pedir ahora</a>
-          </div>
-        </div>
-      </div>
-      <!-- Item 2 -->
-      <div class="col">
-        <div class="card h-100">
-          <img src="img/broaster pierna.jpg" class="card-img-top fixed-menu-img" alt="Hamburguesa Doble">
-          <div class="card-body text-center">
-            <h5 class="card-title">Broaster Pierna</h5>
-            <p class="card-text">S/ 12.00</p>
-            <a href="#" class="btn btn-warning">Pedir ahora</a>
-          </div>
-        </div>
-      </div>
-      <!-- Item 3 -->
-      <div class="col">
-        <div class="card h-100">
-          <img src="img/broaster ala.jpg" class="card-img-top fixed-menu-img" alt="Salchipapa Especial">
-          <div class="card-body text-center">
-            <h5 class="card-title">Broaster Ala</h5>
-            <p class="card-text">S/ 11.00</p>
-            <a href="#" class="btn btn-warning">Pedir ahora</a>
+            <h5 class="card-title" th:text="${prod.nombre}">Nombre</h5>
+            <p class="card-text" th:text="${#numbers.formatDecimal(prod.precio,1,2)}">0.00</p>
+            <a th:href="@{/cart/add/{id}(id=${prod.id})}" class="btn-add-cart">Pedir ahora</a>
           </div>
         </div>
       </div>
     </div>
+
+
+<div th:each="producto : ${productos}" class="col">
+         <div class="card h-100">
+           <!-- Se construye dinámicamente la ruta de la imagen. Se asume que cada producto tiene una propiedad "imagen" con el nombre del archivo (por ejemplo, 'broaster_ala.jpg') -->
+           <img th:src="@{'/img/alitas.jpg'}" class="card-img-top fixed-menu-img" alt="Alitas" />
+
+           <div class="card-body text-center">
+             <!-- Se inyecta dinámicamente el nombre -->
+             <h5 class="card-title" th:text="${producto.nombre}">Nombre del Producto</h5>
+             <!-- Se inyecta y formatea el precio -->
+             <p class="card-text" th:text="'S/ ' + ${#numbers.formatDecimal(producto.precio, 1, 2)}">S/ 0.00</p>
+             <!-- Botón que llama al controlador para agregar el producto al carrito, usando el id del producto -->
+             <a th:href="@{/cart/add/{id}(id=${producto.id})}" class="btn btn-warning">Pedir Ahora</a>
+           </div>
+         </div>
+      </div>
+    
+
+
+
+    <div class="col">
+      <div class="card h-100">
+        <img src="img/broaster encuentrop.avif" class="card-img-top fixed-menu-img" alt="Broaster Clásico">
+        <div class="card-body text-center">
+          <h5 class="card-title">Broaster Encuentro</h5>
+          <p class="card-text">S/ 14.00</p>
+          <!-- Cambio manual del enlace -->
+          <a href="/cart/add/2" class="btn btn-warning btn-add-cart">Pedir ahora</a>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="img/broaster pierna.jpg" class="card-img-top fixed-menu-img" alt="Hamburguesa Doble">
+        <div class="card-body text-center">
+          <h5 class="card-title">Broaster Pierna</h5>
+          <p class="card-text">S/ 12.00</p>
+          <a href="#" class="btn btn-warning">Pedir ahora</a>
+        </div>
+      </div>
+    </div>
+    <!-- Item 3 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="img/broaster ala.jpg" class="card-img-top fixed-menu-img" alt="Salchipapa Especial">
+        <div class="card-body text-center">
+          <h5 class="card-title">Broaster Ala</h5>
+          <p class="card-text">S/ 11.00</p>
+          <a href="#" class="btn btn-warning">Pedir ahora</a>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 
   <!-- Sección de Hamburguesas -->
@@ -245,67 +203,39 @@
   </div>
 
 
-
-
-  <!-- FOOTER -->
-  <footer class="bg-dark text-white pt-5 pb-4 mt-5">
-    <div class="container text-md-left">
-      <div class="row">
-
-        <!-- Logo -->
-        <div class="col-md-3">
-          <img src="/img/LogoPapaB.png" alt="Logo" height="80px">
-          <p class="mt-2">Papa Brothers - Sabor que une.</p>
-        </div>
-
-        <!-- Redes -->
-        <div class="col-md-2">
-          <h5 class="text-uppercase mb-4">Redes Sociales</h5>
-          <a href="#" class="text-white d-block mb-2"><i class="fab fa-facebook-f me-2"></i>Facebook</a>
-          <a href="#" class="text-white d-block mb-2"><i class="fab fa-instagram me-2"></i>Instagram</a>
-          <a href="#" class="text-white d-block mb-2"><i class="fab fa-tiktok me-2"></i>Tiktok</a>
-        </div>
-
-        <!-- Nosotros -->
-        <div class="col-md-3">
-          <h5 class="text-uppercase mb-4">Nosotros</h5>
-          <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Historia</a>
-          <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Trabaja con Nosotros</a>
-        </div>
-
-        <!-- Legales -->
-        <div class="col-md-2">
-          <h5 class="text-uppercase mb-4">Legales</h5>
-          <a th:href="@{/politicas}" class="text-white text-decoration-none d-block mb-2">Políticas de privacidad</a>
-          <a th:href="@{/terminos}" class="text-white text-decoration-none d-block mb-2">Términos y condiciones</a>
-        </div>
-
-        <!-- Atención -->
-        <div class="col-md-2">
-          <h5 class="text-uppercase mb-4">Atención al Cliente</h5>
-          <p><i class="bi bi-telephone-fill me-2"></i>(01) 7137590</p>
-          <p><i class="bi bi-envelope-fill me-2"></i> contacto@papabrothers.com</p>
-          <p><i class="bi bi-geo-alt-fill me-2"></i> San Martín de Porres, Lima - Perú</p>
-        </div>
-      </div>
-
-      <hr class="mb-4">
-
-      <div class="row align-items-center">
-        <div class="col-md-7">
-          <p>© 2025 Grupo 3. Todos los derechos reservados.</p>
-        </div>
-        <div class="col-md-5 text-md-end">
-          <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="text-white me-3"><i class="fab fa-tiktok"></i></a>
-          <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer -->
+  <div th:replace="~{componentes/footer :: footer}"></div>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function updateCartCount() {
+        fetch('/cart/count')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('cart-count').textContent = data.count;
+            })
+            .catch(error => console.error('Error al actualizar el carrito:', error));
+    }
+
+    // Opcional: Asumiendo que tus botones de "Pedir ahora" tienen la clase "btn-add-cart"
+    document.querySelectorAll('.btn-add-cart').forEach(btn => {
+        btn.addEventListener('click', function (event) {
+            event.preventDefault(); // Evita la navegación inmediata
+            const url = btn.getAttribute('href');
+            fetch(url)
+              .then(() => {
+                  // Espera breve y actualiza el contador
+                  setTimeout(updateCartCount, 500);
+              })
+              .catch(error => console.error('Error agregando producto al carrito:', error));
+        });
+    });
+</script>
+
+
+  
 </body>
 
 </html>

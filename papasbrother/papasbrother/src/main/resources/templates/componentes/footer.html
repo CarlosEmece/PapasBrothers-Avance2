@@ -1,0 +1,124 @@
+<div th:fragment="footer">
+    <!-- Footer Principal -->
+
+<!--Footer-->
+    <footer class="bg-dark text-white pt-5 pb-4">
+        <div class="container text-md-left">
+            <div class="row text-md-left">
+
+                <!-- Logo -->
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <img src="/img/LogoPapaB.png" alt="Logo" height="80px">
+                    <p class="mt-2">Papa Brothers - Sabor que une.</p>
+                </div>
+
+                <!-- Redes Sociales -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold">Redes Sociales</h5>
+                    <a href="#" class="text-white text-decoration-none d-block mb-2"><i
+                            class="fab fa-facebook-f me-2"></i>Facebook</a>
+                    <a href="#" class="text-white text-decoration-none d-block mb-2"><i
+                            class="fab fa-instagram me-2"></i>Instagram</a>
+                    <a href="#" class="text-white text-decoration-none d-block mb-2"><i
+                            class="fab fa-tiktok me-2"></i>Tiktok</a>
+                </div>
+
+                <!-- Nosotros -->
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold">Nosotros</h5>
+
+                    <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Historia</a>
+                    <a th:href="@{/nosotros}" class="text-white text-decoration-none d-block mb-2">Trabaja con
+                        Nosotros</a>
+                    <a href="#" class="text-white text-decoration-none d-block mb-2" data-bs-toggle="modal"
+                        data-bs-target="#modalSugerencia">Sugerencia</a>
+
+                </div>
+
+                <!-- Políticas -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold">Legales</h5>
+                    <a th:href="@{/politicas}" class="text-white text-decoration-none d-block mb-2">Políticas de
+                        privacidad</a>
+                    <a th:href="@{/terminos}" class="text-white text-decoration-none d-block mb-2">Términos y
+                        condiciones</a>
+                    <a th:href="@{/admin}" class="text-white text-decoration-none d-block mb-2">Admin</a>
+
+                </div>
+
+                <!-- Atención al Cliente -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold">Atención al Cliente</h5>
+                    <p><i class="bi bi-telephone-fill me-2"></i>(01) 7137590</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i>contacto@papabrothers.com</p>
+                    <p><i class="bi bi-geo-alt-fill me-2"></i>San Martín de Porres, Lima - Perú</p>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="text-white">© 2025 Grupo 3. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="text-center text-md-right">
+                        <a href="#" class="text-white me-4"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-4"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="text-white me-4"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <!-- Modal Sugerencia -->
+        <div class="modal fade" id="modalSugerencia">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sugerencias</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="textoNbre">Papas Brother</p>
+                        <p class="textoNbre">San Martín de Porres</p>
+
+                        <h3 class="text-center mb-4">¡DÉJANOS TUS SUGERENCIAS!</h3>
+
+                        <form class="row g-3" action="/sugerencias/enviar" method="post">
+                            <div class="col-md-6">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required
+                                    pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
+                                    title="El nombre solo puede contener letras y espacios.">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required
+                                    pattern="^[a-zA-Z0-9ñÑ._%+-]+@[a-zA-Z0-9ñÑ.-]+\.[a-zA-Z]{2,}$"
+                                    title="El correo no debe contener espacios ni símbolos extraños, pero la 'ñ' está permitida.">
+                            </div>
+
+                            <div class="col-12">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descripcion" name="descripcion" rows="3"
+                                    required></textarea>
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-warning w-100 mb-3">
+                                    Enviar Sugerencia
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </footer>
+
+</div>

@@ -69,7 +69,7 @@ public class ContactoController {
     @GetMapping("/eliminar/{id}")
     public String eliminarContacto(@PathVariable Long id) {
         contactoService.deleteContacto(id);
-        return "redirect:/administradorpanel"; 
+        return "redirect:/inicio"; 
     }
 
 
