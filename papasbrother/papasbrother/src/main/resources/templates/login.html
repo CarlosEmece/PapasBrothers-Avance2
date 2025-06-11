@@ -120,7 +120,7 @@
                 <div class="card shadow-lg p-4 border-0 rounded-4">
                     <h3 class="text-center mb-4" style="font-family: 'Righteous', cursive; color: orange;">
                         Iniciar Sesión</h3>
-                    <form method="post" action="/login" th:action="@{/login}"></form>
+                    <form method="post" th:action="@{/login}">
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                         <div class="mb-3">  
                             <label for="username" class="form-label">Usuario</label>
@@ -137,8 +137,9 @@
                         </div>
                         <div class="text-center">
                             <span>¿No tienes una cuenta?</span>
-                            <a href="/registro" class="text-decoration-none btn btn-success" style="color: orange;">
-                                Crear cuenta</a>
+                            <a th:href="@{/registro}" class="text-decoration-none btn btn-success" style="color: orange;">
+                            Crear cuenta
+                            </a>
                         </div>
                     </form>
                 </div>

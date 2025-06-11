@@ -1,5 +1,6 @@
 package com.papasbrother.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,8 @@ public class Producto {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idProducto")  // ← necesario
+
     private Integer idProducto;
 
     private String nombres;
@@ -23,6 +26,7 @@ public class Producto {
     private Integer stock;
 
     @Lob
+    @Column(name = "foto", columnDefinition = "LONGBLOB") // explícito para MySQL
     private byte[] foto;
 
     

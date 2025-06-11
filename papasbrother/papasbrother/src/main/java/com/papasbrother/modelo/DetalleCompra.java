@@ -10,6 +10,7 @@ import lombok.Data;
 public class DetalleCompra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idDetalleCompra")
     private Integer idDetalleCompra;
 
     @ManyToOne
@@ -22,6 +23,7 @@ public class DetalleCompra {
 
     private Integer cantidad;
 
-    private Double precio;
+    @Column(name = "precioCompra")
+    private Double precioCompra;
 
 }

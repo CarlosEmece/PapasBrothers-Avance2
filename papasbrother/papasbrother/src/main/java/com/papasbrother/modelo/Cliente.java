@@ -23,6 +23,7 @@ public class Cliente {
     private Usuario usuario;
 
     private String dni;
-    private String nombres;
+    private String nombre;
+    private String email; 
     private String direccion;
 }

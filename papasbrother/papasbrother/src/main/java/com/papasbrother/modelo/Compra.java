@@ -14,6 +14,8 @@ public class Compra {
    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCompra")  // ← importante
+
     private Integer idCompra;
 
     @ManyToOne
@@ -24,7 +26,7 @@ public class Compra {
     @JoinColumn(name = "idPago", nullable = false)
     private Pago pago;
 
-    private LocalDateTime fechaCompras;
+    private LocalDateTime fechaCompra;
 
     private Double monto;
 
@@ -35,7 +37,7 @@ public class Compra {
 
     @PrePersist
     public void prePersist() {
-        fechaCompras = LocalDateTime.now();
+        fechaCompra = LocalDateTime.now();
     }
    
 

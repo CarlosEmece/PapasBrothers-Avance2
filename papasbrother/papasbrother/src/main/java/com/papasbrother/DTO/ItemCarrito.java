@@ -12,5 +12,10 @@ import lombok.NoArgsConstructor;
 public class ItemCarrito {
      private Producto producto;
     private int cantidad;
+
     
+public double getSubtotal() {
+    return producto.getPrecio() * cantidad;
+ }
+
 }

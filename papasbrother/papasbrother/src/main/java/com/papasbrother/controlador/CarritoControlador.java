@@ -136,7 +136,7 @@
                 detalle.setCompra(compra);
                 detalle.setProducto(item.getProducto());
                 detalle.setCantidad(item.getCantidad());
-                detalle.setPrecio(item.getProducto().getPrecio());
+                detalle.setPrecioCompra(item.getProducto().getPrecio());
                 detalleCompraServicio.guardar(detalle);
             }
 

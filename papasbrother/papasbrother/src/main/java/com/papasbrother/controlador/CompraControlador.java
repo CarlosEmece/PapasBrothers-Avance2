@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/compras")
+@RequestMapping("/compra")
 public class CompraControlador {
 
     
@@ -105,7 +105,7 @@ public class CompraControlador {
         for (DetalleCompra detalle : carrito) {
             if (detalle.getProducto().getIdProducto().equals(idProducto)) {
                 detalle.setCantidad(detalle.getCantidad() + cantidad);
-                detalle.setPrecio(producto.getPrecio() * detalle.getCantidad());
+                detalle.setPrecioCompra(producto.getPrecio() * detalle.getCantidad());
                 existe = true;
                 break;
             }
@@ -114,7 +114,7 @@ public class CompraControlador {
             DetalleCompra nuevoDetalle = new DetalleCompra();
             nuevoDetalle.setProducto(producto);
             nuevoDetalle.setCantidad(cantidad);
-            nuevoDetalle.setPrecio(producto.getPrecio() * cantidad);
+            nuevoDetalle.setPrecioCompra(producto.getPrecio() * cantidad);
             carrito.add(nuevoDetalle);
         }
 
@@ -130,7 +130,7 @@ public class CompraControlador {
             carrito = new ArrayList<>();
         }
 
-        double total = carrito.stream().mapToDouble(DetalleCompra::getPrecio).sum();
+        double total = carrito.stream().mapToDouble(DetalleCompra::getPrecioCompra).sum();
 
         model.addAttribute("carrito", carrito);
         model.addAttribute("total", total);
@@ -160,10 +160,10 @@ public class CompraControlador {
 
         Compra compra = new Compra();
         compra.setCliente(cliente);
-        compra.setFechaCompras(LocalDateTime.now());
+        compra.setFechaCompra(LocalDateTime.now());
         compra.setEstado("PENDIENTE");
 
-        double montoTotal = carrito.stream().mapToDouble(DetalleCompra::getPrecio).sum();
+        double montoTotal = carrito.stream().mapToDouble(DetalleCompra::getPrecioCompra).sum();
         compra.setMonto(montoTotal);
 
         comprasService.guardar(compra);
