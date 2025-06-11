@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Boleta - Papa Brothers</title>
+  <link rel="stylesheet" href="/papasbrother/papasbrother/src/main/resources/static/css/boleta.css">
+</head>
+<body>
+
+<div id="boleta">
+  <h2>Papa Brothers</h2>
+  <div class="resto-info">
+    <p><strong>RUC:</strong> 20481234567</p>
+    <p><strong>Dirección:</strong> Av. Sabores 123, Lima</p>
+    <p><strong>Teléfono:</strong> (01) 7654321</p>
+  </div>
+
+  <div class="boleta-num" id="num-boleta"></div>
+
+  <div class="cliente-info">
+    <p><strong>Cliente:</strong> Juan Pérez</p>
+    <p><strong>Fecha:</strong> <span id="fecha"></span></p>
+    <p><strong>Hora:</strong> <span id="hora"></span></p>
+    <p><strong>Mesa:</strong> 4</p>
+  </div>
+
+  <div class="detalle-productos">
+    <table>
+      <thead>
+        <tr>
+          <th>Cant.</th>
+          <th>Descripción</th>
+          <th>P. Unitario</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2</td>
+          <td>Hamburguesa Clásica</td>
+          <td>S/ 18.00</td>
+          <td>S/ 36.00</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Papas Fritas</td>
+          <td>S/ 8.00</td>
+          <td>S/ 8.00</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Gaseosa</td>
+          <td>S/ 5.00</td>
+          <td>S/ 5.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="totales">
+    <p>Subtotal: S/ 49.00</p>
+    <p>IGV (18%): S/ 8.82</p>
+    <p><strong>Total: S/ 57.82</strong></p>
+  </div>
+
+  <div class="footer">
+    ¡Gracias por su visita!
+  </div>
+</div>
+
+<button onclick="exportarPDF()">Exportar Boleta en PDF</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="/papasbrother/papasbrother/src/main/resources/static/js/boleta.js"></script>
+</body>
+</html>

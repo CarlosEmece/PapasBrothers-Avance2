@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.papasbrother.modelo.Usuario;
-import com.papasbrother.repositorio.UsuarioRepository;
+import com.papasbrother.repositorio.UsuarioRepositorio;
 
 @Service
 public class UsuarioService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioRepositorio usuarioRepository;
 
     public Usuario saveUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);

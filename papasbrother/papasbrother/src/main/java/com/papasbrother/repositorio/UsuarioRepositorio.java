@@ -10,6 +10,6 @@ import com.papasbrother.modelo.Usuario;
 
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByEmail(String email);
 }
