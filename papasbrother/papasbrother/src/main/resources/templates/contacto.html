@@ -27,30 +27,32 @@
                 <h2 class="text-center mb-3">Contacto</h2>
                 <p class="text-center mb-4">Si tienes alguna duda o sugerencia, contáctate con nosotros.</p>
 
+                <div th:if="${error}" class="alert alert-danger text-center" th:text="${error}"></div>
+                <div th:if="${!autenticado}" class="alert alert-warning text-center">Debe iniciar sesión para enviar el formulario de contacto.</div>
+
                 <div class="mb-3">
                     <label class="form-label">Nombre y apellido *</label>
                     <input type="text" class="form-control" name="nombreApellido" required
-                        pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" title="Solo letras y espacios permitidos.">
+                        pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" title="Solo letras y espacios permitidos." th:disabled="${!autenticado}">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Correo electrónico *</label>
                     <input type="email" class="form-control" name="correo" required
                         pattern="^[a-zA-Z0-9ñÑ._%+-]+@[a-zA-Z0-9ñÑ.-]+\.[a-zA-Z]{2,}$"
-                        title="El correo no debe contener espacios ni símbolos extraños, pero la 'ñ' está permitida.">
+                        title="El correo no debe contener espacios ni símbolos extraños, pero la 'ñ' está permitida."
+                        th:value="${correoUsuario}" th:readonly="${autenticado}" th:disabled="${!autenticado}">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Teléfono *</label>
                     <input type="tel" class="form-control" name="telefono" required pattern="^\d{9}$"
-                        title="El número debe contener exactamente 9 dígitos.">
-
+                        title="El número debe contener exactamente 9 dígitos." th:disabled="${!autenticado}">
                 </div>
-
 
                 <div class="mb-3">
                     <label class="form-label">Motivo *</label>
-                    <select class="form-select" name="motivo" required>
+                    <select class="form-select" name="motivo" required th:disabled="${!autenticado}">
                         <option value="">Selecciona el motivo</option>
                         <option value="queja">Queja</option>
                         <option value="sugerencia">Sugerencia</option>
@@ -61,18 +63,18 @@
 
                 <div class="mb-3">
                     <label class="form-label">Descripción *</label>
-                    <textarea class="form-control" name="descripcion" required></textarea>
+                    <textarea class="form-control" name="descripcion" required th:disabled="${!autenticado}"></textarea>
                 </div>
 
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" id="novedades" name="novedades">
+                    <input class="form-check-input" type="checkbox" id="novedades" name="novedades" th:disabled="${!autenticado}">
                     <label class="form-check-label" for="novedades">
                         Acepto recibir información sobre las novedades y promociones de Papas Brother
                     </label>
                 </div>
 
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" id="privacidad" name="privacidad" required>
+                    <input class="form-check-input" type="checkbox" id="privacidad" name="privacidad" required th:disabled="${!autenticado}">
                     <label class="form-check-label" for="privacidad">
                         Acepto la Política de Privacidad
                     </label>
@@ -80,7 +82,7 @@
 
                 <a href="#" class="d-block mb-3 text-decoration-none">Política de Privacidad</a>
 
-                <button type="submit" class="btn btn-warning w-100 btn-animate">
+                <button type="submit" class="btn btn-warning w-100 btn-animate" th:disabled="${!autenticado}">
                     <i class="fa fa-save"></i> Enviar
                 </button>
             </form>

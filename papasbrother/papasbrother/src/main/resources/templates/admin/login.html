@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/login-admin.css}" />
+    <title>Login Administrador</title>
+
+</head>
+
+<body>
+    <h2>--ADMINISTRADOR--</h2>
+
+    <form th:action="@{/admin/login}" method="post">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" required />
+        <br />
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required />
+        <br />
+        <button type="submit">Ingresar</button>
+        <a th:href="@{/inicio}" class="button-link">Página Principal</a>
+    </form>
+
+    <div class="message error-message" th:if="${param.error}">
+        <p style="color:red;">Usuario o contraseña incorrectos.</p>
+    </div>
+    <div class="message success-message" th:if="${param.logout}">
+        <p style="color:green;">Has cerrado sesión correctamente.</p>
+    </div>
+</body>
+
+</html>

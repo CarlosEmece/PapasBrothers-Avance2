@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resumen de Pedido</title>
+</head>
+<body>
+    <h2>Resumen de tu Pedido</h2>
+    <ul>
+        <li th:each="prod : ${resumen.productos}" th:text="${prod}"></li>
+    </ul>
+    <p><strong>Total:</strong> <span th:text="${resumen.total}"></span></p>
+    <a href="/inicio">Volver al inicio</a>
+</body>
+</html>

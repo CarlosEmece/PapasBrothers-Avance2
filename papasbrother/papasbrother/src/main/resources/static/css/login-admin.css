@@ -1,0 +1,196 @@
+/* ==============================
+   Variables Globales
+============================== */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #3f51b5;
+    --background-color: #f0f2f5;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --placeholder-color: #999999;
+    --error-color: #e53935;
+    --success-color: #43a047;
+    --info-color: #2196F3;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+}
+
+/* ==============================
+   Body General
+============================== */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(to right, #004e92, #000428);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    line-height: 1.6;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ==============================
+   Título
+============================== */
+h2 {
+    color: white;
+    font-size: 2.2em;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    animation: fadeInDown 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   Formulario
+============================== */
+form {
+    background-color: var(--card-background);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    animation: fadeInScale 0.6s ease-out forwards;
+    z-index: 1;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Borde animado del formulario */
+form::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--border-radius);
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    filter: blur(20px);
+    opacity: 0.3;
+    z-index: -1;
+    transition: opacity var(--transition-speed);
+}
+
+form:hover::before {
+    opacity: 0.6;
+}
+
+/* ==============================
+   Inputs y Labels
+============================== */
+label {
+    font-weight: 600;
+    font-size: 0.95em;
+    color: var(--text-color);
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    background-color: #fdfdfd;
+    color: var(--text-color);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: var(--placeholder-color);
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* ==============================
+   Botones
+============================== */
+button[type="submit"],
+.button-link {
+    width: 100%;
+    padding: 14px;
+    box-sizing: border-box; /* <- importante */
+    font-size: 1.1em;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--border-radius);
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color var(--transition-speed), transform 0.2s, box-shadow var(--transition-speed);
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    display: block;
+    margin: 0; /* unifica márgenes */
+}
+
+/* Botón verde */
+button[type="submit"] {
+    background-color: var(--primary-color);
+}
+
+/* Botón azul */
+.button-link {
+    background-color: var(--info-color);
+}
+
+/* ==============================
+   Mensajes de Estado
+============================== */
+.message {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95em;
+    animation: slideInUp 0.5s ease-out forwards;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-message p {
+    color: var(--error-color) !important;
+    margin: 0;
+}
+
+.success-message p {
+    color: var(--success-color) !important;
+    margin: 0;
+}

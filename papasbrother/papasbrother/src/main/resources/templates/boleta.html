@@ -2,35 +2,87 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <title>Boleta de Pedido</title>
   <style>
-    body { font-family: Arial, sans-serif; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 8px; border: 1px solid #000; text-align: center; }
-    h2 { text-align: center; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      color: #333;
+    }
+    .empresa {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .empresa img {
+      max-width: 80px;
+      display: block;
+      margin: 0 auto;
+    }
+    .empresa h1 {
+      color: #FFCA1A;
+      margin: 10px 0;
+    }
+    .datos-boleta {
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+      font-size: 13px;
+    }
+    th {
+      background-color: #f3f3f3;
+    }
+    .resumen {
+      margin-top: 30px;
+      text-align: right;
+      font-size: 16px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  <h2>Boleta de Compra</h2>
+  <div class="empresa">
+    <!-- Se asume que el logo está en la carpeta /img, lo ajustamos con Thymeleaf -->
+    <img th:src="@{/img/logoComoPaPobre.png}" alt="Logo de PapasBrother">
+    <h1 th:text="${empresa}">PapasBrother</h1>
+  </div>
+  
+  <div class="datos-boleta">
+    <p><strong>Boleta N°:</strong> <span th:text="${numero}">PED-XXXX</span></p>
+    <p><strong>Fecha:</strong> <span th:text="${fecha}">dd/MM/yyyy HH:mm</span></p>
+    <p><strong>Cliente:</strong> <span th:text="${usuario}">usuario</span></p>
+  </div>
+  
   <table>
     <thead>
       <tr>
         <th>Producto</th>
-        <th>Precio</th>
         <th>Cantidad</th>
+        <th>P. Unitario</th>
         <th>Subtotal</th>
       </tr>
     </thead>
     <tbody>
-      <tr th:each="item : ${cart.items}">
-        <td th:text="${item.producto.nombre}">Producto</td>
-        <td th:text="${item.producto.precio}">0.00</td>
+      <tr th:each="item : ${items}">
+        <td th:text="${item.nombre}">Nombre del producto</td>
         <td th:text="${item.cantidad}">1</td>
-        <td th:text="${item.subtotal}">0.00</td>
+        <td th:text="${item.precio}">00.00</td>
+        <td th:text="${item.precio * item.cantidad}">00.00</td>
       </tr>
     </tbody>
   </table>
-
-  <h4 style="text-align:right;">Total: S/ <span th:text="${cart.total}">0.00</span></h4>
+  
+  <div class="resumen">
+    Total: S/. <span th:text="${total}">00.00</span>
+  </div>
 </body>
 </html>
-

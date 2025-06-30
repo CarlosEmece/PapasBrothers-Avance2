@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Papas Broather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+
+
+    <!-- Inyección de la variable global isAuthenticated -->
+    <script th:inline="javascript">
+        var isAuthenticated = /*[[${#authorization.expression('isAuthenticated()')}]]*/ false;
+        console.log("isAuthenticated:", isAuthenticated);
+    </script>
+
+
+</head>
+
+<!-- Navbar -->
+<nav th:replace="~{componentes/navbar :: nav-bar}"></nav>
+
+<!-- EL MENU -->
+<!-- Sección de hamburguesas -->
+<br>
+<br>
+<div class="tituloComida">MENÚ DE HAMBURGUESAS</div>
+
+
+
+<!-- Sección de Menu Hamburguesa -->
+<div class="container">
+    <section class="prod-section">
+        <div class="row g-4">
+            <!-- Hamburguesa 1 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="prod-card h-100">
+                    <div class="prod-img-container">
+                        <img th:src="@{/img/hambur1.jpeg}" class="hamburguesa-img" alt="Hamburguesa La Clasica">
+                    </div>
+                    <div class="prod-body">
+                        <h3>Hamburguesa La Clásica</h3>
+                        <p>Pan + Hamburguesa casera + Papas fritas</p>
+                        <div class="prod-price">
+                            <span class="discounted-price">S/ 10.00</span>
+                        </div>
+                        <button class="btn btn-prod">Pedir ahora</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hamburguesa 2 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="prod-card h-100">
+                    <div class="prod-img-container">
+                        <img th:src="@{/img/hambur2.jpg}" class="hamburguesa-img" alt="Hamburguesa La Americana">
+                    </div>
+                    <div class="prod-body">
+                        <h3>Hamburguesa La Americana</h3>
+                        <p>Pan + Hamburguesa casera + Jamón + Queso + Papas fritas</p>
+                        <div class="prod-price">
+                            <span class="discounted-price">S/ 12.00</span>
+                        </div>
+                        <button class="btn btn-prod">Pedir ahora</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hamburguesa 3 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="prod-card h-100">
+                    <div class="prod-img-container">
+                        <img th:src="@{/img/hambur3.jpg}" class="hamburguesa-img" alt="Hamburguesa La Royal">
+                    </div>
+                    <div class="prod-body">
+                        <h3>Hamburguesa La Royal</h3>
+                        <p>Pan + Hamburguesa casera + Huevo + Queso + Papas fritas</p>
+                        <div class="prod-price">
+                            <span class="discounted-price">S/ 13.00</span>
+                        </div>
+                        <button class="btn btn-prod">Pedir ahora</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hamburguesa 4 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="prod-card h-100">
+                    <div class="prod-img-container">
+                        <img th:src="@{/img/hambur4.jpg}" class="hamburguesa-img" alt="Hamburguesa La Charapa">
+                    </div>
+                    <div class="prod-body">
+                        <h3>Hamburguesa La Charapa</h3>
+                        <p>Pan + Hamburguesa casera + Huevo + Plátano + Papas fritas</p>
+                        <div class="prod-price">
+                            <span class="discounted-price">S/ 14.00</span>
+                        </div>
+                        <button class="btn btn-prod">Pedir ahora</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hamburguesa 5 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="prod-card h-100">
+                    <div class="prod-img-container">
+                        <img th:src="@{/img/hambur5.jpg}" class="hamburguesa-img" alt="Hamburguesa La Hawaiana">
+                    </div>
+                    <div class="prod-body">
+                        <h3>Hamburguesa La Hawaiana</h3>
+                        <p>Pan + Hamburguesa casera + Jamón + Queso + Piña + Papas fritas</p>
+                        <div class="prod-price">
+                            <span class="discounted-price">S/ 13.00</span>
+                        </div>
+                        <button class="btn btn-prod">Pedir ahora</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hamburguesa 6 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="prod-card h-100">
+                    <div class="prod-img-container">
+                        <img th:src="@{/img/hambur6.jpg}" class="hamburguesa-img" alt="Hamburguesa La Carnivora">
+                    </div>
+                    <div class="prod-body">
+                        <h3>Hamburguesa La Carnivora</h3>
+                        <p>Pan + Hamburguesa casera + Jamón + Queso + Huevo + Tocino + Papas fritas</p>
+                        <div class="prod-price">
+                            <span class="discounted-price">S/ 16.00</span>
+                        </div>
+                        <button class="btn btn-prod">Pedir ahora</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hamburguesa 7 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="prod-card h-100">
+                    <div class="prod-img-container">
+                        <img th:src="@{/img/hambur7.jpg}" class="hamburguesa-img" alt="Hamburguesa La Hawaiana Extrema">
+                    </div>
+                    <div class="prod-body">
+                        <h3>Hamburguesa La Hawaiana Extrema</h3>
+                        <p>Pan + Doble Hamburguesa casera + Doble Jamón + Doble Queso + Doble Piña + Papas fritas</p>
+                        <div class="prod-price">
+                            <span class="discounted-price">S/ 20.00</span>
+                        </div>
+                        <button class="btn btn-prod">Pedir ahora</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hamburguesa 8 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="prod-card h-100">
+                    <div class="prod-img-container">
+                        <img th:src="@{/img/hambur8.jpg}" class="hamburguesa-img"
+                            alt="Hamburguesa La Carnivora Extrema">
+                    </div>
+                    <div class="prod-body">
+                        <h3>Hamburguesa La Carnivora Extrema</h3>
+                        <p>Pan + Doble Hamburguesa casera + Doble Jamón + Doble Queso + Doble Huevo + Doble Tocino +
+                            Papas fritas</p>
+                        <div class="prod-price">
+                            <span class="discounted-price">S/ 25.00</span>
+                        </div>
+                        <button class="btn btn-prod">Pedir ahora</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+
+<!-- Footer -->
+<div th:replace="~{componentes/footer :: footer}"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/inicio.js}"></script>
+
+<!-- jsPDF y el plugin autoTable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+
+<script src="/js/carrito.js"></script>
+</body>
+
+</html>

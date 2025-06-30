@@ -21,39 +21,49 @@
 
     <!-- Iniciar sesion -->
 
-    <section class="login-section py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-5">
-                    <div class="card shadow-lg p-4 border-0 rounded-4">
-                        <h3 class="text-center mb-4 login-title">Iniciar Sesión</h3>
-                        <!-- Se agrega la acción y método al formulario -->
-                        <form th:action="@{/login}" method="post">
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Usuario</label>
-                               
-                                <input type="text" class="form-control" id="username" name="username1"
-                                    placeholder="Ingresa tu usuario" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Contraseña</label>
-                                
-                                <input type="password" class="form-control" id="password" name="password1"
-                                    placeholder="Ingresa tu contraseña" required>
-                            </div>
-                            <div class="d-grid mb-3 mt-4">
-                                
-                                <button type="submit" class="btn btn-dark">Ingresar</button>
-                            </div>
-                            <div class="text-center mt-3 no-account-text">
-                                ¿No tienes una cuenta? <a th:href="@{/usuarios/registro}" class="create-account-link">Crear cuenta</a>
-                            </div>
-                        </form>
-                    </div>
+    <!-- Formulario de login -->
+<section class="login-section py-5" style="margin-top: 120px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-lg p-4 border-0 rounded-4 fire-border">
+                    <h3 class="text-center mb-4" style="font-family: 'Righteous', cursive; color: black;">
+                        Iniciar Sesión
+                    </h3>
+                    <form method="post" action="/login">
+                        <div th:if="${param.mensaje}" class="alert alert-warning text-center" th:text="${param.mensaje}"></div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Usuario</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="username" 
+                                   name="username"
+                                   required
+                                   placeholder="Ingresa tu usuario">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" 
+                                   class="form-control" 
+                                   id="password" 
+                                   name="password"
+                                   required
+                                   placeholder="Ingresa tu contraseña">
+                        </div>
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-dark">Ingresar</button>
+                        </div>
+                        <div class="text-center">
+                            <span>¿No tienes una cuenta?</span>
+                            <a href="/crearcuenta" class="text-decoration-none">Crear cuenta</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Footer -->
    <div th:replace="~{componentes/footer :: footer}"></div>

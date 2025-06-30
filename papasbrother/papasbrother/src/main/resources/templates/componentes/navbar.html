@@ -18,109 +18,191 @@
                 </a>
 
                 <!-- Ícono de carrito y botón del menú juntos -->
-                <div class="d-flex align-items-center gap-3">
-                    <!-- Carrito -->
-                    <a th:href="@{/cart}" class="text-warning fs-4" title="Carrito">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span id="cart-count" class="badge bg-danger" th:text="${cart != null ? cart.items.size() : 0}">0</span>
-
-                    </a>
-
-                    <!-- Botón del menú (las tres líneas) -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-
-                <!-- Menú desplegable lateral -->
-                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
-                    aria-labelledby="offcanvasDarkNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title">
-                            <span style="color: red;">Papas</span>
-                            <span style="color: orange;">Brother</span>
-                        </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                            aria-label="Cerrar"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/login}">Iniciar Sesión</a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a th:href="@{/menu}" class="btn btn-primary">Ver Menú</a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" th:href="@{/menu}">Hamburguesas</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/menu}">Alitas</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/menu}">Salchipapas</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/menu}">Pollos Broaster</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/promociones}">Promociones</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/nosotros}">Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/contacto}">Contacto</a>
-                            </li>
-                        </ul>
-
-                        <!-- Redes sociales -->
-                        <div class="social-menu mt-4">
-                            <h6 class="text-secondary text-center mb-3">Redes Sociales</h6>
-                            <div class="d-flex justify-content-center gap-3">
-                                <a href="https://www.facebook.com/comopa.pobre/about" class="text-primary"><i
-                                        class="fab fa-facebook fa-lg"></i></a>
-                                <a href="https://www.tiktok.com/@como_papobre" style="color: #000000;"><i
-                                        class="fab fa-tiktok fa-lg"></i></a>
-                                <a href="https://www.instagram.com/como_papobre/" style="color: #C13584;"><i
-                                        class="fab fa-instagram fa-lg"></i></a>
+                <div class="d-flex align-items-center ms-auto me-3">
+                    <span th:if="${autenticado}" class="text-white fw-bold me-2" style="font-size: 1.1em;">
+                        <i class="fa fa-user-circle me-1"></i>
+                        <span th:text="${nombreUsuario}"></span>
+                    </span>
+                    <div class="dropdown">
+                        <a class="text-white dropdown-toggle d-flex align-items-center" href="#" role="button"
+                            id="cartDropdown" data-bs-toggle="dropdown">
+                            <i class="fas fa-shopping-cart fa-lg me-1"></i>
+                            <span class="badge bg-warning" id="cartCount">0</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="cartDropdown">
+                            <div class="cart-dropdown">
+                                <div class="d-flex justify-content-between align-items-center px-3 pt-2">
+                                    <h6 class="dropdown-header mb-0">Tu Pedido:</h6>
+                                    <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+                                </div>
+                                <div id="cartItems" class="px-3" style="max-height: 50vh; overflow-y: auto;"></div>
+                                <div class="dropdown-divider"></div>
+                                <!-- Opciones para seleccionar documento -->
+                                <div class="px-3 pb-2">
+                                    <div class="mb-2">
+                                        <label class="me-2">
+                                            <input type="radio" name="tipoDocumento" value="boleta" checked>
+                                            Boleta
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="tipoDocumento" value="factura">
+                                            Factura
+                                        </label>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="me-2">
+                                            <input type="radio" name="metodoPago" value="efectivo" checked>
+                                            Efectivo
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="metodoPago" value="tarjeta">
+                                            Tarjeta 
+                                        </label>
+                                    </div>
+                                    <div class="d-flex justify-content-between fw-bold mb-2">
+                                        <span>Total:</span>
+                                        <span>S/ <span id="cartTotal">0.00</span></span>
+                                    </div>
+                                    <button class="btn btn-warning w-100" onclick="checkout(event)">Realizar Pedido</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+                <!-- Scripts para actualizar el contador del carrito -->
+                <script>
+                    function updateCartCount() {
+                        fetch('/cart/count')
+                            .then(response => response.json())
+                            .then(data => {
+                                document.getElementById('cartCount').textContent = data.count;
+                            })
+                            .catch(error => console.error('Error al actualizar el carrito:', error));
+                    }
+
+                    // Ejemplo: asigna eventos a botones de "Pedir ahora"
+                    document.querySelectorAll('.btn-add-cart').forEach(btn => {
+                        btn.addEventListener('click', function (event) {
+                            event.preventDefault();
+                            const url = btn.getAttribute('href');
+                            fetch(url)
+                                .then(() => {
+                                    setTimeout(updateCartCount, 500);
+                                })
+                                .catch(error => console.error('Error agregando producto al carrito:', error));
+                        });
+                    });
+                </script>
+
+
+                <!-- jsPDF y jsPDF-AutoTable -->
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+                <script
+                    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+
+                <!-- Variable global inyectada con Thymeleaf -->
+                <script th:inline="javascript">
+                    var usuarioLogueado = /*[[${#authentication.name}]]*/ "defaultUser";
+                </script>
+
+
+
+
+
+                <!-- Botón del menú (las tres líneas) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
-        </nav>
 
-    </div>
-    </div>
+            <!-- Menú desplegable lateral -->
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">
+                        <span style="color: red;">Papas</span>
+                        <span style="color: orange;">Brother</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Cerrar"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/inicio">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/login}">Iniciar Sesión</a>
+                        </li>
 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown">Menú</a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" th:href="@{/menuhambur}">Hamburguesas</a></li>
+                                <li><a class="dropdown-item" th:href="@{/menualit}">Alitas</a></li>
+                                <li><a class="dropdown-item" th:href="@{/menusalchi}">Salchipapas</a></li>
+                                <li><a class="dropdown-item" th:href="@{/menupech}">Pollos Broaster</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/promociones}">Promociones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/nosotros}">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/contacto}">Contacto</a>
+                        </li>
+                    </ul>
+
+
+
+                    <!-- CERRAR SESION -->
+
+                    <div sec:authorize="isAuthenticated()" class="d-flex justify-content-center my-4">
+                        <form th:action="@{/logout}" method="post" onsubmit="return limpiarChatbot();">
+                            <button type="submit" class="btn btn-danger px-4">Cerrar sesión</button>
+                        </form>
+                    </div>
+
+                    <script>
+                        function limpiarChatbot() {
+                            const confirmar = confirm("¿Estás seguro de que deseas cerrar sesión?");
+                            if (confirmar) {
+                                localStorage.removeItem("pb_chat_session");
+                                return true; // Permite el envío del formulario
+                            } else {
+                                return false; // Cancela el envío del formulario
+                            }
+                        }
+                    </script>
+
+
+                    <!-- Redes sociales -->
+                    <div class="social-menu mt-4">
+                        <h6 class="text-secondary text-center mb-3">Redes Sociales</h6>
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="https://www.facebook.com/comopa.pobre/about" class="text-primary"><i
+                                    class="fab fa-facebook fa-lg"></i></a>
+                            <a href="https://www.tiktok.com/@como_papobre" style="color: #000000;"><i
+                                    class="fab fa-tiktok fa-lg"></i></a>
+                            <a href="https://www.instagram.com/como_papobre/" style="color: #C13584;"><i
+                                    class="fab fa-instagram fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 </nav>
 
+</div>
+</div>
 
-<script>
-    function updateCartCount() {
-        fetch('/cart/count')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('cart-count').textContent = data.count;
-            })
-            .catch(error => console.error('Error al actualizar el carrito:', error));
-    }
-
-    // Opcional: Asumiendo que tus botones de "Pedir ahora" tienen la clase "btn-add-cart"
-    document.querySelectorAll('.btn-add-cart').forEach(btn => {
-        btn.addEventListener('click', function (event) {
-            event.preventDefault(); // Evita la navegación inmediata
-            const url = btn.getAttribute('href');
-            fetch(url)
-              .then(() => {
-                  // Espera breve y actualiza el contador
-                  setTimeout(updateCartCount, 500);
-              })
-              .catch(error => console.error('Error agregando producto al carrito:', error));
-        });
-    });
-</script>
-
-
+</div>
+</nav>

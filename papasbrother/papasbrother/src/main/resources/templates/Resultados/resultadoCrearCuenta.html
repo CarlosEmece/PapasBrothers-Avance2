@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión Exitoso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('img/resultadologin.avif');
+            background-size: 75%;
+            background-position: center center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h2 {
+            color: #020202;
+            text-align: center;
+        }
+
+        .registro-info {
+            font-size: 1.1em;
+            margin: 20px 0;
+        }
+
+        .registro-info strong {
+            color: #232423;
+        }
+
+        .registro-info span {
+            color: #555;
+        }
+
+        .back-button {
+            display: inline-block;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+<body>
+    <div class="container">
+        <h2>¡Registro exitoso!</h2>
+        <div class="registro-info">
+            <p><strong>Nombre:</strong> <span th:text="${nombre}"></span></p>
+            <p><strong>Correo:</strong> <span th:text="${correo}"></span></p>
+            <p><strong>Usuario:</strong> <span th:text="${username}"></span></p>
+        </div>
+        <a href="/login" class="back-button">Volver a iniciar sesión</a>
+    </div>
+</body>
+

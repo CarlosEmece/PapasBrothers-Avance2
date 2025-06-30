@@ -162,6 +162,105 @@ body {
     border-radius: 5px;
 }
 
+/* Contenedor de la sección */
+.prod-section {
+    padding: 90px 15px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f8eed0;
+}
+
+/* Tarjetas de productos */
+.prod-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+.prod-card:hover {
+    transform: scale(1.05);
+}
+
+/* Contenedor de imagen con relación 1:1 */
+.prod-img-container {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hamburguesa-img, .alita-img, .prod-img, .bebida-img, .pechuga-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.prod-card:hover .hamburguesa-img,
+.prod-card:hover .alita-img,
+.prod-card:hover .prod-img,
+.prod-card:hover .bebida-img,
+.prod-card:hover .pechuga-img {
+    transform: scale(1.1);
+}
+
+/* Cuerpo de la tarjeta */
+.prod-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.prod-body h3 {
+    font-family: 'Righteous', cursive;
+    color: #212529;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+.prod-body p {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+/* Precios */
+.prod-price {
+    margin-top: auto;
+    padding-top: 10px;
+}
+.discounted-price, .selected-price {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 1.3rem;
+    display: inline-block;
+}
+
+/* Botón de acción */
+.btn-prod {
+    background-color: #FFCA1A;
+    color: #212529;
+    border: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+.btn-prod:hover {
+    background-color: #e0b000;
+}
 
 
 /* =======================

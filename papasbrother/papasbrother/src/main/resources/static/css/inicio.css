@@ -40,6 +40,11 @@ body {
     margin-right: 10px;
 }
 
+
+
+/* =======================
+   CARRITO DE COMPRAS
+======================= */
 /* Ícono carrito */
 .navbar .fa-shopping-cart {
     transition: transform 0.2s ease;
@@ -47,6 +52,42 @@ body {
 
 .navbar .fa-shopping-cart:hover {
     transform: scale(1.2);
+}
+
+/* Estilos para el menú desplegable del carrito */
+.dropdown-menu.dropdown-menu-dark {
+    /* Define un ancho mínimo para que el contenido no se comprima demasiado */
+    min-width: 300px; /* Puedes ajustar este valor según tus necesidades */
+    /* Define un ancho máximo para que no se extienda demasiado en pantallas muy grandes */
+    max-width: 90vw; /* El 90% del ancho del viewport, ajusta si es necesario */
+    padding: 10px; /* Añade un poco de padding para mejor espaciado */
+}
+
+/* Asegura que el contenedor de los items del carrito use el ancho completo disponible */
+.cart-dropdown {
+    width: 100%; /* Asegura que el contenido dentro del dropdown ocupe todo el ancho */
+}
+
+/* Ajusta el espaciado de los elementos internos si es necesario */
+.cart-dropdown .px-3 {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+/* Asegura que los radios y el total tengan espacio */
+.cart-dropdown .mb-2 {
+    margin-bottom: 0.5rem !important; /* Espaciado entre elementos */
+}
+
+/* Ajustes para los elementos dentro del dropdown si el texto es largo */
+.dropdown-header,
+.fw-bold span {
+    white-space: normal; /* Permite que el texto se ajuste en varias líneas si es necesario */
+}
+
+/* Asegura que el botón ocupe todo el ancho disponible */
+.cart-dropdown .btn.w-100 {
+    width: 100% !important;
 }
 
 
